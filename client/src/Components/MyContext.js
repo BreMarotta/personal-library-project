@@ -6,6 +6,7 @@ const UserProvider = ({children}) => {
 
     const [user, setUser] = useState({})
     const [search, setSearch] = useState("")
+    const [books, setBooks] = useState([])
 
     useEffect(() => {
         fetch('/me')
@@ -30,12 +31,16 @@ const UserProvider = ({children}) => {
     const updateSearch = (searchedInfo) => {
         setSearch(searchedInfo)
     }
+
+    const displayBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase() || book.title.toLowerCase().includes(search.toLowerCase())));
+    
   return (
     <UserContext.Provider value= {{
         user,
         login,
         logout, 
         signup,
+        books: displayBooks,
         updateSearch
     }}>
         {children}
