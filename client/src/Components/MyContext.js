@@ -5,6 +5,7 @@ const UserContext = React.createContext();
 const UserProvider = ({children}) => {
 
     const [user, setUser] = useState({})
+    const [search, setSearch] = useState("")
 
     useEffect(() => {
         fetch('/me')
@@ -25,12 +26,17 @@ const UserProvider = ({children}) => {
     const signup = (user) => {
         setUser(user)
     }
+
+    const updateSearch = (searchedInfo) => {
+        setSearch(searchedInfo)
+    }
   return (
     <UserContext.Provider value= {{
         user,
         login,
         logout, 
-        signup
+        signup,
+        updateSearch
     }}>
         {children}
     </UserContext.Provider>

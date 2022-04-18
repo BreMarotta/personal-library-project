@@ -4,6 +4,8 @@
 }
 .navigation {
   background-color: gray;
+  text-align: left;
+  display: inline-block;
 }
 
 .linkStyles {
@@ -12,7 +14,9 @@
   padding: 10px;
   color: black;
 }
-
+.searchbar {
+  width: 500px;
+}
 button {
   background-color: gray;
 }

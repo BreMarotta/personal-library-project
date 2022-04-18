@@ -11,7 +11,10 @@ const Home = () => {
         )
     } else {
         return (
-            <h3>{user.username}'s Personal Library</h3>
+            <div>
+                <h3>{user.username}'s Personal Library</h3>
+                <NavLink to='/logout' exact className="linkStyles">Logout</NavLink>
+            </div>
         )
     }
 }
