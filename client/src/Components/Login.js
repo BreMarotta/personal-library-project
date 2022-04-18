@@ -5,12 +5,27 @@ const Login = () => {
     const {login} = useContext(UserContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [error, setError] = useState("")
+    const [errors, setErrors] = useState([])
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        
+        fetch('/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ username, password }),
+        }).then(r => {
+            if (r.ok) {
+                (r => r.json())
+                .then((user) => login(user));
+            } else {
+                (r => r.json())
+                .then((err) => setErrors(err.error));
+            }
+        });
     }
+
   return (
     <div>
         <form onSubmit={handleSubmit}>
@@ -29,6 +44,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)} />
                 <br/>
                 <input type="submit"/>
+            {errors.map((error) => (<li key={error}>{error}</li>))}
         </form>
     </div>
   )

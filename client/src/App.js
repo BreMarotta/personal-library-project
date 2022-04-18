@@ -8,7 +8,7 @@ import Library from './Components/Library'
 import AddBookForm from './Components/AddBookForm'
 import Signup from './Components/Signup'
 import Login from './Components/Login'
-// import ShowPage from './Components/ShowPage';
+import ShowPage from './Components/ShowPage';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Route exact path="/login" element={<Login />}/>
           <Route exact path="/library" element={<Library />} />
           <Route exact path='/new' element={<AddBookForm />} />
-          {/* <Route path='/:id' element={<ShowPage />}/> */}
+          <Route path='/:id' element={<ShowPage />}/>
         </Routes>
       </UserProvider>
     </div>
