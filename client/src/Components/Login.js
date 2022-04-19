@@ -11,21 +11,19 @@ const Login = () => {
         e.preventDefault()
         fetch('/login', {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify({ username, password }),
         })
         .then(res => res.json())
         .then(user => {
-            if (!user.errors){
+            if (!user.error){
                 login(user)
                 // history.pushState('/')
             } else {
                 setUsername("")
                 setPassword("")
-                const errorsLis = user.errors.map(e => <li>{e}</li>)
-                setErrorsList(errorsLis)
+                // const errorsLis = user.error.map(e => <li>{e}</li>)
+                setErrorsList(user.error)
             }
         });
     }
@@ -48,6 +46,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)} />
                 <br/>
                 <input type="submit"/>
+                <br/>
             {errorsList}
         </form>
     </div>

@@ -18,11 +18,11 @@ const UserProvider = ({children}) => {
 
 
     const login = (user) => {
-        // setUser(user)
+        setUser(user)
     }
 
     const logout = () => {
-        alert("Hello from Context")
+        setUser({})
     }
 
     const signup = (user) => {
