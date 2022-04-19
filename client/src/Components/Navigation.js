@@ -17,10 +17,11 @@ const Navigation = () => {
       })
     }
 
-    if (!user) {
+    if (!user.username) {
       return (
-        <Home />
-        
+        <div>
+          <NavLink to="/" exact className= "linkStyles" >Home</NavLink>
+        </div>
       )
     } else {
       return (
