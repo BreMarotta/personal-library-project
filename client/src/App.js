@@ -14,9 +14,10 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-        <Home />
+        {/* <Home /> */}
         <Navigation />
         <Routes>
+          <Route exact path="/" element={<Home />} />
           <Route exact path="/signup" element={<Signup />}/>
           <Route exact path="/login" element={<Login />}/>
           <Route exact path="/library" element={<Library />} />

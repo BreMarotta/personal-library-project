@@ -16,6 +16,7 @@ const UserProvider = ({children}) => {
         })
     }, [])
 
+
     const login = (user) => {
         // setUser(user)
     }
@@ -34,7 +35,7 @@ const UserProvider = ({children}) => {
 
     const displayBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase() || book.title.toLowerCase().includes(search.toLowerCase())));
     
-    console.log(user.username)
+    console.log(user)
     console.log(user.error)
   return (
     <UserContext.Provider value= {{
