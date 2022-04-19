@@ -14,10 +14,36 @@ const UserProvider = ({children}) => {
         .then(res => res.json())
         .then(data => {
             setUser(data)
-            data.error ? setLoggedIn(false) : setLoggedIn(true)
+            if (data.error){
+                setLoggedIn(false)
+            } else {
+                setLoggedIn(true)
+                fetchBooks()
+            }
         })
     }, [])
 
+    const fetchBooks = () => {
+        fetch('/books')
+        .then(res => res.json())
+        .then(data => {
+            setBooks(data)
+        })
+    }
+
+    const addBook = (book) => {
+        alert("hello from context")
+        console.log(book)
+        fetch('/books', {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(book)
+        })
+        .then(res => res.json())
+        .then(data => {
+            setBooks([...books, data])
+        })
+    }
 
     const login = (user) => {
         setUser(user)
@@ -38,10 +64,8 @@ const UserProvider = ({children}) => {
         setSearch(searchedInfo)
     }
 
-    const displayBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase() || book.title.toLowerCase().includes(search.toLowerCase())));
-    
-    console.log(user)
-    console.log(user.error)
+    // const displayBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase() || book.title.toLowerCase().includes(search.toLowerCase())));
+
   return (
     <UserContext.Provider value= {{
         user,
@@ -49,8 +73,9 @@ const UserProvider = ({children}) => {
         login,
         logout, 
         signup,
-        books: displayBooks,
-        updateSearch
+        books,
+        updateSearch,
+        addBook
     }}>
         {children}
     </UserContext.Provider>

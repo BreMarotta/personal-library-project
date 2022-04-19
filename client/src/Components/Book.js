@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Book = () => {
+const Book = ({ book }) => {
   return (
-    <div>Book</div>
+    <div>{book.title}</div>
   )
 }
 
