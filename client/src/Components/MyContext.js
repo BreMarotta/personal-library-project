@@ -5,6 +5,7 @@ const UserContext = React.createContext();
 const UserProvider = ({children}) => {
 
     const [user, setUser] = useState({})
+    const [loggedIn, setLoggedIn] = useState(false)
     const [search, setSearch] = useState("")
     const [books, setBooks] = useState([])
 
@@ -13,20 +14,24 @@ const UserProvider = ({children}) => {
         .then(res => res.json())
         .then(data => {
             setUser(data)
+            data.error ? setLoggedIn(false) : setLoggedIn(true)
         })
     }, [])
 
 
     const login = (user) => {
         setUser(user)
+        setLoggedIn(true)
     }
 
     const logout = () => {
         setUser({})
+        setLoggedIn(false)
     }
 
     const signup = (user) => {
         setUser(user)
+        setLoggedIn(true)
     }
 
     const updateSearch = (searchedInfo) => {
@@ -40,6 +45,7 @@ const UserProvider = ({children}) => {
   return (
     <UserContext.Provider value= {{
         user,
+        loggedIn,
         login,
         logout, 
         signup,

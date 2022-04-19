@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from './MyContext'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
     const {signup} = useContext(UserContext)
+    const navigate = useNavigate()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
@@ -23,7 +25,7 @@ const Signup = () => {
         .then(user => {
             if (!user.errors){
                 signup(user)
-                // history.pushState('/')
+                navigate('/')
             } else {
                 setUsername("")
                 setPassword("")
@@ -37,6 +39,7 @@ const Signup = () => {
   return (
     <div>
         <form onSubmit={handleSubmit}>
+            <h3>Create a new account: </h3>
             <label>Username: </label>
             <input 
                 type="text" 

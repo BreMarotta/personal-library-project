@@ -3,9 +3,9 @@ import { UserContext } from './MyContext'
 import { NavLink } from 'react-router-dom'
 
 const Home = () => {
-    const {user, logout} = useContext(UserContext)
+    const {user, loggedIn, logout} = useContext(UserContext)
 
-    if (user.username){
+    if (loggedIn){
         return (
             <div>
                 <h3>{user.username}'s Personal Library</h3>
@@ -15,7 +15,9 @@ const Home = () => {
         )
     } else {
         return (
-            <h3>Please<NavLink to='/login' exact className="linkStyles" >Login</NavLink>or<NavLink to='/signup' exact className="linkStyles" >Signup</NavLink></h3>
+            <div>
+            <h3>Please Login or Signup</h3>
+            </div>
         )
     }
 }

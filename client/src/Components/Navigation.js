@@ -1,26 +1,31 @@
 import React, { useContext } from 'react'
 import { UserContext } from './MyContext'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Search from './Search'
 import Home from './Home'
 
 
 const Navigation = () => {
-    const {user, logout} = useContext(UserContext)
+    const {user, loggedIn, logout} = useContext(UserContext)
+    const navigate = useNavigate()
 
     const logoutUser = () => {
       fetch('/logout', {
-        method: "DELETE"
+        method: "DELETE", 
+        headers: { "Content-Type": "application/json"}
       })
       .then(() => {
         logout()
+        navigate('/')
       })
     }
 
-    if (!user.username) {
+    if (!loggedIn) {
       return (
         <div>
-          <NavLink to="/" exact className= "linkStyles" >Home</NavLink>
+          <NavLink to='/login' exact className="linkStyles" >Login</NavLink>
+          <NavLink to='/signup' exact className="linkStyles" >Signup</NavLink>
+          <hr/>
         </div>
       )
     } else {
