@@ -32,16 +32,19 @@ const UserProvider = ({children}) => {
     }
 
     const addBook = (book) => {
-        console.log(book)
-        fetch('/books', {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(book)
-        })
-        .then(res => res.json())
-        .then(data => {
-            setBooks([...books, data])
-        })
+    //     fetch('/books', {
+    //         method: "POST",
+    //         headers: { "content-type": "application/json" },
+    //         body: JSON.stringify(book)
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         if (!data.errors){
+    //         setBooks([...books, data])
+    //     } else {
+
+    //     }
+    //     })
     }
 
     const login = (user) => {

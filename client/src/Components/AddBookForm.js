@@ -11,13 +11,29 @@ const AddBookForm = () => {
     personalRating: "",
     favoriteQuote: ""
   })
+  const [errorsList, setErrorsList] = useState([])
   // const [lentTo, setLentTo] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addBook(newBook)
-    navigate('/books')
+    fetch('/books', {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(newBook)
+  })
+  .then(res => res.json())
+  .then(data => {
+      if (!data.errors){
+      addBook(data)
+      navigate('/books')
+  } else {
+      const errorsLis = data.errors.map(e => <li>{e}</li>)
+      setErrorsList(errorsLis)
   }
+  })
+}
+  //   navigate('/books')
+  // }
 
   const handleChange = (e) => {
     setNewBook({
@@ -26,6 +42,7 @@ const AddBookForm = () => {
   }
  if (loggedIn) {
   return (
+    <div>
     <form onSubmit={handleSubmit}>
       <h3>Add a book to your library:</h3>
       <hr/>
@@ -49,13 +66,17 @@ const AddBookForm = () => {
         <br/>
       <label>Personal Rating: </label>
       <input 
-        type="text"
+        type="integer"
         name="personalRating"
         onChange={handleChange}/>
         <br/>
         <input type="submit"/>
 
     </form>
+    <ul>
+      {errorsList}
+    </ul>
+    </div>
   )
 } else {
   return (

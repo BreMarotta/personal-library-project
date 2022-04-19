@@ -2,7 +2,7 @@ import React from 'react'
 
 const Book = ({ book }) => {
   return (
-    <div>{book.title}</div>
+    <div>{book.title} by {book.author}</div>
   )
 }
 
