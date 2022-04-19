@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { UserContext } from './MyContext'
 
 const AddBookForm = () => {
-  const {addBook} = useContext(UserContext)
+  const {loggedIn, addBook} = useContext(UserContext)
   const navigate = useNavigate()
   const [newBook, setNewBook] = useState({
     title: "",
@@ -16,7 +16,7 @@ const AddBookForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     addBook(newBook)
-    navigate('/')
+    navigate('/books')
   }
 
   const handleChange = (e) => {
@@ -24,7 +24,7 @@ const AddBookForm = () => {
       ...newBook, [e.target.name]: e.target.value
     })
   }
-
+ if (loggedIn) {
   return (
     <form onSubmit={handleSubmit}>
       <h3>Add a book to your library:</h3>
@@ -42,7 +42,7 @@ const AddBookForm = () => {
         onChange={handleChange}/>
         <br/>
       <label>Favorite Quote: </label>
-      <input 
+      <textarea 
         type="text"
         name="favoriteQuote"
         onChange={handleChange}/>
@@ -57,6 +57,11 @@ const AddBookForm = () => {
 
     </form>
   )
+} else {
+  return (
+    <h3>Not Authorized - Please Login or Signup</h3>
+  )
+}
 }
 
 export default AddBookForm

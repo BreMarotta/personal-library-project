@@ -17,7 +17,7 @@ class BooksController < ApplicationController
 
     def create 
         new_book = current_user.books.create(book_params)
-        if newBook.valid?
+        if new_book.valid?
             render json: new_book, status: :created
         else 
             render json: { errors: new_book.errors.full_messages }, status: :unprocessable_entity

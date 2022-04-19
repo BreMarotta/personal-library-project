@@ -32,7 +32,6 @@ const UserProvider = ({children}) => {
     }
 
     const addBook = (book) => {
-        alert("hello from context")
         console.log(book)
         fetch('/books', {
             method: "POST",
@@ -47,6 +46,7 @@ const UserProvider = ({children}) => {
 
     const login = (user) => {
         setUser(user)
+        fetchBooks()
         setLoggedIn(true)
     }
 
@@ -57,14 +57,16 @@ const UserProvider = ({children}) => {
 
     const signup = (user) => {
         setUser(user)
+        fetchBooks()
         setLoggedIn(true)
     }
 
     const updateSearch = (searchedInfo) => {
         setSearch(searchedInfo)
     }
+    // console.log(books)
 
-    // const displayBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase() || book.title.toLowerCase().includes(search.toLowerCase())));
+    const displayBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase()) || book.author.toLowerCase().includes(search.toLowerCase()));
 
   return (
     <UserContext.Provider value= {{
@@ -73,7 +75,7 @@ const UserProvider = ({children}) => {
         login,
         logout, 
         signup,
-        books,
+        books: displayBooks,
         updateSearch,
         addBook
     }}>
