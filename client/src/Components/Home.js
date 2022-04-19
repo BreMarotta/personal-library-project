@@ -3,13 +3,13 @@ import { UserContext } from './MyContext'
 import { NavLink } from 'react-router-dom'
 
 const Home = () => {
-    const {user} = useContext(UserContext)
+    const {user, logout} = useContext(UserContext)
 
     if (user.username){
         return (
             <div>
                 <h3>{user.username}'s Personal Library</h3>
-                <NavLink to='/logout' exact className="linkStyles">Logout</NavLink>
+                
             </div>
             
         )

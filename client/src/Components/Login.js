@@ -5,7 +5,7 @@ const Login = () => {
     const {login} = useContext(UserContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [errors, setErrors] = useState([])
+    const [errorsList, setErrorsList] = useState([])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -15,13 +15,17 @@ const Login = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ username, password }),
-        }).then(r => {
-            if (r.ok) {
-                (r => r.json())
-                .then((user) => login(user));
+        })
+        .then(res => res.json())
+        .then(user => {
+            if (!user.errors){
+                login(user)
+                // history.pushState('/')
             } else {
-                (r => r.json())
-                .then((err) => setErrors(err.error));
+                setUsername("")
+                setPassword("")
+                const errorsLis = user.errors.map(e => <li>{e}</li>)
+                setErrorsList(errorsLis)
             }
         });
     }
@@ -44,7 +48,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)} />
                 <br/>
                 <input type="submit"/>
-            {errors.map((error) => (<li key={error}>{error}</li>))}
+            {errorsList}
         </form>
     </div>
   )

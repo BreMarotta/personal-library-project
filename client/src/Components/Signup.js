@@ -10,29 +10,30 @@ const Signup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch('/signup', {
+        fetch('/signup',{
             method: 'POST',
             headers: { "Content-Type": 'application/json'},
             body: JSON.stringify({
-                username,
-                password,
+                username: username, 
+                password: password,
                 password_confirmation: passwordConfirmation
             })
         })
-        .then(res => {
-            if(res.ok) {
-                res.json()
-                .then(user => {
+        .then(res => res.json())
+        .then(user => {
+            if (!user.errors){
                 signup(user)
-                })
+                // history.pushState('/')
             } else {
-                res.json()
-                .then((err) => setErrorsList(err.errors));
-            }            
+                setUsername("")
+                setPassword("")
+                setPasswordConfirmation("")
+                const errorsLis = user.errors.map(e => <li>{e}</li>)
+                setErrorsList(errorsLis)
+            }
         })
     }
 
-    const errorsLis = errorsList.map(x => <li>{x}</li>)
   return (
     <div>
         <form onSubmit={handleSubmit}>
@@ -60,7 +61,7 @@ const Signup = () => {
                 <input type="submit"/>
         </form>
         <ul>
-            {errorsLis}
+            {errorsList}
         </ul>
     </div>
   )
