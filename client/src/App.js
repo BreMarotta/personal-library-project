@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/login" element={<Login />}/>
           <Route exact path="/books" element={<Library />} />
           <Route exact path='/new' element={<AddBookForm />} />
-          <Route path='/:id' element={<ShowPage />}/>
+          <Route path='books/:id' element={<ShowPage />}/>
         </Routes>
       </UserProvider>
     </div>

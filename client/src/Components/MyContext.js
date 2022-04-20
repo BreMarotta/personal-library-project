@@ -8,6 +8,7 @@ const UserProvider = ({children}) => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [search, setSearch] = useState("")
     const [books, setBooks] = useState([])
+    const [book, setBook] = useState({})
 
     useEffect(() => {
         fetch('/me')
@@ -29,6 +30,11 @@ const UserProvider = ({children}) => {
         .then(data => {
             setBooks(data)
         })
+    }
+
+    const showBook = (book) => {
+        alert("Hello from Context")
+        setBook(book)
     }
 
     const addBook = (book) => {
@@ -68,7 +74,9 @@ const UserProvider = ({children}) => {
         signup,
         books: displayBooks,
         updateSearch,
-        addBook
+        addBook,
+        showBook,
+        book
     }}>
         {children}
     </UserContext.Provider>
