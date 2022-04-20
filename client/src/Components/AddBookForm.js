@@ -5,21 +5,23 @@ import { UserContext } from './MyContext'
 const AddBookForm = () => {
   const {loggedIn, addBook} = useContext(UserContext)
   const navigate = useNavigate()
-  const [newBook, setNewBook] = useState({
-    title: "",
-    author: "",
-    personalRating: "",
-    favoriteQuote: ""
-  })
+  const [title, setTitle] = useState("")
+  const [author, setAuthor] = useState("")
+  const [favoriteQuote, setFavoriteQuote] = useState("")
+  const [personalRating, setPersonalRating] = useState(0)
   const [errorsList, setErrorsList] = useState([])
-  // const [lentTo, setLentTo] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
     fetch('/books', {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(newBook)
+      body: JSON.stringify({
+        title: title,
+        author: author,
+        favorite_quote: favoriteQuote,
+        personal_rating: personalRating
+      })
   })
   .then(res => res.json())
   .then(data => {
@@ -32,14 +34,7 @@ const AddBookForm = () => {
   }
   })
 }
-  //   navigate('/books')
-  // }
 
-  const handleChange = (e) => {
-    setNewBook({
-      ...newBook, [e.target.name]: e.target.value
-    })
-  }
  if (loggedIn) {
   return (
     <div>
@@ -50,25 +45,25 @@ const AddBookForm = () => {
       <input 
         type="text"
         name="title"
-        onChange={handleChange}/>
+        onChange={(e) => setTitle(e.target.value)}/>
         <br/>
       <label>Author:</label>
       <input 
         type="text"
         name="author"
-        onChange={handleChange}/>
+        onChange={(e) => setAuthor(e.target.value)}/>
         <br/>
       <label>Favorite Quote: </label>
       <textarea 
         type="text"
         name="favoriteQuote"
-        onChange={handleChange}/>
+        onChange={(e) => setFavoriteQuote(e.target.value)}/>
         <br/>
       <label>Personal Rating: </label>
       <input 
         type="integer"
         name="personalRating"
-        onChange={handleChange}/>
+        onChange={(e) => setPersonalRating(e.target.value)}/>
         <br/>
         <input type="submit"/>
 
