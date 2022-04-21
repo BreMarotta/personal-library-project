@@ -25,7 +25,7 @@ const Navigation = () => {
         <div className= "navigation">
             <h1>Hello {user.username}</h1>  
             <NavLink to="/" exact className= "linkStyles" >Home</NavLink>
-            <NavLink to="/books" exact className= "linkStyles">Library</NavLink>
+            <NavLink to="/library" exact className= "linkStyles">Library</NavLink>
             <NavLink to='/new' exact className="linkStyles" >Add a Book</NavLink>
             <Search />
             <button onClick={logoutUser}>Logout</button>

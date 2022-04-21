@@ -25,7 +25,7 @@ const Signup = () => {
         .then(user => {
             if (!user.errors){
                 signup(user)
-                navigate('/books')
+                navigate('/library')
             } else {
                 setUsername("")
                 setPassword("")

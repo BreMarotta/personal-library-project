@@ -27,7 +27,7 @@ const AddBookForm = () => {
   .then(data => {
       if (!data.errors){
       addBook(data)
-      navigate('/books')
+      navigate('/library')
   } else {
       const errorsLis = data.errors.map(e => <li>{e}</li>)
       setErrorsList(errorsLis)

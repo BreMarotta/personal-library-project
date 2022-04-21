@@ -1,9 +1,8 @@
 import React, { useContext } from 'react'
 import { UserContext } from './MyContext'
-import { NavLink } from 'react-router-dom'
 
 const Home = () => {
-    const {user, loggedIn, logout} = useContext(UserContext)
+    const {user, loggedIn} = useContext(UserContext)
 
     if (loggedIn){
         return (

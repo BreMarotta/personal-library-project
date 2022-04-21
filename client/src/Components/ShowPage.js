@@ -1,9 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { UserContext } from './MyContext'
+import { useParams } from 'react-router-dom'
 
-const ShowPage = (props) => {
-  const {loggedIn, book} = useContext(UserContext)
+const ShowPage = () => {
+  const {loggedIn, showBook, book} = useContext(UserContext)
+  const params = useParams()
 
+  console.log(params.id)
+
+  useEffect(() => {
+    fetch(`/books/${params.id}`)
+        .then(res => res.json())
+        .then(data => {
+            showBook(data)
+        })
+      }, [])
 
   if (loggedIn) {
     return (
@@ -12,6 +23,7 @@ const ShowPage = (props) => {
         <h4>by {book.author}</h4>
         <h4>Favorite quote: {book.favorite_quote}</h4>
         <br/>
+        <button onClick={(e) => console.log(e)}>Edit Book Details</button>
       </div>
     )
   } else {

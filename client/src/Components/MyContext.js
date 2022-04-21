@@ -24,23 +24,6 @@ const UserProvider = ({children}) => {
         })
     }, [])
 
-    const fetchBooks = () => {
-        fetch('/books')
-        .then(res => res.json())
-        .then(data => {
-            setBooks(data)
-        })
-    }
-
-    const showBook = (book) => {
-        alert("Hello from Context")
-        setBook(book)
-    }
-
-    const addBook = (book) => {
-        setBooks([...books, book])
-    }
-
     const login = (user) => {
         setUser(user)
         fetchBooks()
@@ -58,10 +41,30 @@ const UserProvider = ({children}) => {
         setLoggedIn(true)
     }
 
+    const fetchBooks = () => {
+        fetch('/books')
+        .then(res => res.json())
+        .then(data => {
+            setBooks(data)
+        })
+    }
+
+    const addBook = (book) => {
+        setBooks([...books, book])
+    }
+
+    const showBook = (book) => {
+        setBook(book)
+    }
+
+    const updateBook = (book) => {
+        const updatedBooksList = books.map(b => b.id === book.id? book : b)
+        setBooks(updatedBooksList)
+    }
+
     const updateSearch = (searchedInfo) => {
         setSearch(searchedInfo)
     }
-    // console.log(books)
 
     const displayBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase()) || book.author.toLowerCase().includes(search.toLowerCase()));
 
@@ -76,7 +79,8 @@ const UserProvider = ({children}) => {
         updateSearch,
         addBook,
         showBook,
-        book
+        book,
+        updateBook
     }}>
         {children}
     </UserContext.Provider>

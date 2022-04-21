@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react'
-import { Route, useParams } from 'react-router-dom'
-import BookLinks from './BookLinks'
+import React, { useContext } from 'react'
+// import { Route, useParams } from 'react-router-dom'
+// import BookLinks from './BookLinks'
 import Book from './Book'
-import { UserContext, userContext } from './MyContext'
+import { UserContext } from './MyContext'
 
 const Library = () => {
   const {user, books, loggedIn} = useContext(UserContext)
-  const params = useParams();
+  // const params = useParams();
 
   const displayBooks = books.map(b => <Book key={b.id} book={b}/>)
   

@@ -20,7 +20,7 @@ const Login = () => {
         .then(user => {
             if (!user.error){
                 login(user)
-                navigate('/books')
+                navigate('/library')
             } else {
                 setUsername("")
                 setPassword("")
