@@ -1,11 +1,11 @@
 .App {
-  text-align: center;
+  padding-left: 25px;
   background-color: gray;
 }
 .navigation {
   background-color: gray;
-  text-align: left;
-  display: inline-block;
+  text-align: center;
+  /* display: inline-block; */
 }
 
 .linkStyles {
@@ -14,8 +14,15 @@
   padding: 10px;
   color: black;
 }
+
+.search{
+  float: right;
+  padding-right: 45px;
+}
+
 .searchbar {
   width: 500px;
+
 }
 button {
   background-color: gray;

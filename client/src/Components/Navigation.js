@@ -23,11 +23,12 @@ const Navigation = () => {
     if (loggedIn) {
       return (
         <div className= "navigation">
-            <h1>Hello {user.username}</h1>  
+            <h1>Hello {user.username}</h1>
+            <Search />  
             <NavLink to="/" exact className= "linkStyles" >Home</NavLink>
             <NavLink to="/library" exact className= "linkStyles">Library</NavLink>
             <NavLink to='/new' exact className="linkStyles" >Add a Book</NavLink>
-            <Search />
+            
             <button onClick={logoutUser}>Logout</button>
             <hr/>
         </div>

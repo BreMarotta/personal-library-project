@@ -4,7 +4,7 @@ import { UserContext } from './MyContext'
 const Search = () => {
     const {updateSearch} = useContext(UserContext)
   return (
-    <form >
+    <form className="search">
         <button onClick={(e) => e.preventDefault()}>🔍</button>
         <input 
             className="searchbar"
