@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from './MyContext'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+
 
 const ShowPage = () => {
-  const {loggedIn} = useContext(UserContext)
+  const {loggedIn, onDeleteBook} = useContext(UserContext)
+  const navigate = useNavigate()
   const params = useParams()
   const [book, setBook] = useState({})
   const [formStyle, setFormStyle] = useState("none")
@@ -43,7 +45,19 @@ const ShowPage = () => {
     setBook({ 
       ...book, [e.target.name]: e.target.value }) 
   }
-  
+
+  const handleDeleteBook = () => {
+    fetch(`/books/${book.id}`, {
+      method: "DELETE", 
+    }).then((r) => {
+      if (r.ok) {
+        navigate('/library')
+        onDeleteBook(book.id);
+        
+      }
+     })
+  }
+
   if (loggedIn) {
     return (
       <div>
@@ -52,6 +66,7 @@ const ShowPage = () => {
         <h4>Favorite quote: {book.favorite_quote}</h4>
         <br/>
         <button onClick={toggleEditForm}>Edit Book Details</button>
+        <button onClick={handleDeleteBook}>Delete Book From Library</button>
         <form style={{display: formStyle}} onSubmit={handleEditBookSubmit}>
       <h4>Edit details for {book.title}:</h4>
       <hr/>
@@ -80,7 +95,7 @@ const ShowPage = () => {
       <input 
         type="integer"
         name="personal_rating"
-        defaultValue={book.personalRating}
+        defaultValue={book.personal_rating}
         onChange={handleChange}/>
         <br/>
         <input type="submit"/>

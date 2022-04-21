@@ -35,7 +35,13 @@ class BooksController < ApplicationController
     end
 
     def destroy
-
+        book = current_user.books.find_by(id: params[:id])
+        if book
+            book.destroy
+            head :no_content
+        else
+            reder json: { error: "Book not found"}, status: :not_found
+        end
     end
 
     private

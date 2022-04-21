@@ -45,7 +45,6 @@ const UserProvider = ({children}) => {
         .then(res => res.json())
         .then(data => {
             setBooks(data)
-            // console.log(data)
         })
     }
 
@@ -53,8 +52,9 @@ const UserProvider = ({children}) => {
         setBooks([...books, book])
     }
 
-    const updateBook = (book) => {
-        const updatedBooksList = books.map(b => b.id === book.id? book : b)
+    const onDeleteBook = (id) => {
+        alert(id)
+        const updatedBooksList = books.filter(b => b.id !== id)
         setBooks(updatedBooksList)
     }
 
@@ -74,7 +74,7 @@ const UserProvider = ({children}) => {
         books: displayBooks,
         updateSearch,
         addBook,
-        updateBook
+        onDeleteBook
     }}>
         {children}
     </UserContext.Provider>
