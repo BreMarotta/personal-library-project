@@ -8,7 +8,6 @@ const UserProvider = ({children}) => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [search, setSearch] = useState("")
     const [books, setBooks] = useState([])
-    const [book, setBook] = useState({})
 
     useEffect(() => {
         fetch('/me')
@@ -46,15 +45,12 @@ const UserProvider = ({children}) => {
         .then(res => res.json())
         .then(data => {
             setBooks(data)
+            // console.log(data)
         })
     }
 
     const addBook = (book) => {
         setBooks([...books, book])
-    }
-
-    const showBook = (book) => {
-        setBook(book)
     }
 
     const updateBook = (book) => {
@@ -78,8 +74,6 @@ const UserProvider = ({children}) => {
         books: displayBooks,
         updateSearch,
         addBook,
-        showBook,
-        book,
         updateBook
     }}>
         {children}

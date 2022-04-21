@@ -5,7 +5,7 @@ import Book from './Book'
 import { UserContext } from './MyContext'
 
 const Library = () => {
-  const {user, books, loggedIn} = useContext(UserContext)
+  const { books, loggedIn} = useContext(UserContext)
   // const params = useParams();
 
   const displayBooks = books.map(b => <Book key={b.id} book={b}/>)
@@ -13,7 +13,6 @@ const Library = () => {
   if (loggedIn) {
   return (
     <div>
-      <h3>{user.username}'s Personal Library</h3>
       {displayBooks}
     </div>
   )

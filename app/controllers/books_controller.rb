@@ -25,7 +25,13 @@ class BooksController < ApplicationController
     end
 
     def update 
-
+        book = current_user.books.find_by(id: params[:id])
+        if book
+            book.update(book_params)
+            render json: book, status: :accepted
+        else  
+            render json: { error: "Book not found"}, status: :not_found
+        end     
     end
 
     def destroy
@@ -39,7 +45,7 @@ class BooksController < ApplicationController
     end
 
     def book_params
-        params.permit(:title, :author, :personal_rating, :favorite_quote, :lent_to)
+        params.require(:book).permit(:id, :title, :author, :personal_rating, :favorite_quote, :lent_to)
     end
  
     def authorize 
