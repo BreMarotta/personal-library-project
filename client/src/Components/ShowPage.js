@@ -43,7 +43,7 @@ const ShowPage = () => {
     setBook({ 
       ...book, [e.target.name]: e.target.value }) 
   }
-console.log(book)
+  
   if (loggedIn) {
     return (
       <div>
