@@ -10,44 +10,50 @@ const ShowPage = () => {
   const navigate = useNavigate()
   const params = useParams()
   const [book, setBook] = useState({})
-  const [formStyle, setFormStyle] = useState("none")
-  const [errorsList, setErrorsList] = useState([])
+  const [formFlag, setFormFlag] = useState(false)
 
   useEffect(() => {
     fetch(`/books/${params.id}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setBook(data)
         })
       }, [])
 
   const toggleEditForm = () => {
-    let newStyle= formStyle === 'none' ?  '' :  'none'
-    setFormStyle(newStyle)
-  }
-  const handleEditBookSubmit = (e) => {
-    e.preventDefault()
-    fetch(`/books/${book.id}`, {
-      method: "PATCH",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(book)
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (!data.error){
-      toggleEditForm()
-    } else {
-      const errorsLis = data.errors.map(e => <li>{e}</li>)
-      setErrorsList(errorsLis)
-    }
-  })
+    setFormFlag(!formFlag)
   }
 
-  const handleChange = (e) => {
-    setBook({ 
-      ...book, [e.target.name]: e.target.value }) 
+  const updateBook = (updated) => {
+    setBook(updated)
+    toggleEditForm()
   }
+
+  const displayForm = 
+    formFlag === true ? <UpdateBookForm book={book} updateBook={updateBook} /> : console.log("nope")
+
+  // const editBookSubmit = (e) => {
+  //   e.preventDefault()
+  //   fetch(`/books/${book.id}`, {
+  //     method: "PATCH",
+  //     headers: { "content-type": "application/json" },
+  //     body: JSON.stringify(book)
+  // })
+  // .then(res => res.json())
+  // .then(data => {
+  //   if (!data.error){
+  //     toggleEditForm()
+  //   } else {
+  //     const errorsLis = data.errors.map(e => <li>{e}</li>)
+  //     setErrorsList(errorsLis)
+  //   }
+  // })
+  // }
+
+  // const handleChange = (e) => {
+  //   setBook({ 
+  //     ...book, [e.target.name]: e.target.value }) 
+  // }
 
   const handleDeleteBook = () => {
     fetch(`/books/${book.id}`, {
@@ -69,8 +75,9 @@ const ShowPage = () => {
         <h4>Favorite quote: {book.favorite_quote}</h4>
         <br/>
         <button onClick={toggleEditForm}>Edit Book Details</button>
+        {displayForm}
         <button onClick={handleDeleteBook}>Delete Book From Library</button>
-        <form style={{display: formStyle}} onSubmit={handleEditBookSubmit}>
+        {/* <form onSubmit={handleEditBookSubmit}>
           <h4>Edit details for {book.title}:</h4>
             <hr/>
           <label>Title:</label>
@@ -89,7 +96,7 @@ const ShowPage = () => {
           <ul>
             {errorsList}
           </ul>
-        </form>
+        </form> */}
       </div>
     )
   } else {

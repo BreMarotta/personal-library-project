@@ -28,7 +28,11 @@ class BooksController < ApplicationController
         book = current_user.books.find_by(id: params[:id])
         if book
             book.update(book_params)
+            if book.valid?
             render json: book, status: :accepted
+            else
+                render json: { errors: book.errors.full_messages }, status: :unprocessable_entity
+            end 
         else  
             render json: { error: "Book not found"}, status: :not_found
         end     
