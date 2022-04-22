@@ -28,6 +28,11 @@ button {
   background-color: gray;
 }
 
+.additional {
+  float: right;
+  padding-right: 45px;
+}
+
 .App-link {
   color: #61dafb;
 }

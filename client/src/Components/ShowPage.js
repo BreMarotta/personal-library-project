@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from './MyContext'
 import { useParams, useNavigate } from 'react-router-dom'
+import UpdateBookForm from './UpdateBookForm'
+import AdditionalQuotes from './AdditionalQuotes'
 
 
 const ShowPage = () => {
@@ -15,6 +17,7 @@ const ShowPage = () => {
     fetch(`/books/${params.id}`)
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             setBook(data)
         })
       }, [])
@@ -52,8 +55,7 @@ const ShowPage = () => {
     }).then((r) => {
       if (r.ok) {
         navigate('/library')
-        onDeleteBook(book.id);
-        
+        onDeleteBook(book.id); 
       }
      })
   }
@@ -61,6 +63,7 @@ const ShowPage = () => {
   if (loggedIn) {
     return (
       <div>
+        <AdditionalQuotes />
         <h3>{book.title}</h3>
         <h4>by {book.author}</h4>
         <h4>Favorite quote: {book.favorite_quote}</h4>
@@ -68,40 +71,24 @@ const ShowPage = () => {
         <button onClick={toggleEditForm}>Edit Book Details</button>
         <button onClick={handleDeleteBook}>Delete Book From Library</button>
         <form style={{display: formStyle}} onSubmit={handleEditBookSubmit}>
-      <h4>Edit details for {book.title}:</h4>
-      <hr/>
-      <label>Title:</label>
-      <input 
-        type="text"
-        name="title"
-        defaultValue={book.title}
-        onChange={handleChange}/>
-        <br/>
-      <label>Author:</label>
-      <input 
-        type="text"
-        name="author"
-        defaultValue={book.author}
-        onChange={handleChange}/>
-        <br/>
-      <label>Favorite Quote: </label>
-      <textarea 
-        type="text"
-        name="favorite_quote"
-        defaultValue={book.favorite_quote}
-        onChange={handleChange}/>
-        <br/>
-      <label>Personal Rating: </label>
-      <input 
-        type="integer"
-        name="personal_rating"
-        defaultValue={book.personal_rating}
-        onChange={handleChange}/>
-        <br/>
-        <input type="submit"/>
-        <ul>
-          {errorsList}
-        </ul>
+          <h4>Edit details for {book.title}:</h4>
+            <hr/>
+          <label>Title:</label>
+            <input type="text" name="title" defaultValue={book.title} onChange={handleChange}/>
+             <br/>
+          <label>Author:</label>
+            <input type="text" name="author" defaultValue={book.author} onChange={handleChange}/>
+             <br/>
+          <label>Favorite Quote: </label>
+            <textarea type="text" name="favorite_quote" defaultValue={book.favorite_quote} onChange={handleChange}/>
+              <br/>
+          <label>Personal Rating: </label>
+            <input type="integer" name="personal_rating" defaultValue={book.personal_rating} onChange={handleChange}/>
+              <br/>
+          <input type="submit"/>
+          <ul>
+            {errorsList}
+          </ul>
         </form>
       </div>
     )
