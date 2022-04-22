@@ -44,13 +44,17 @@ const UserProvider = ({children}) => {
         fetch('/books')
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setBooks(data)
         })
     }
 
     const addBook = (book) => {
         setBooks([...books, book])
+    }
+
+    const onUpdateBook = (updatedBook) => {
+        const updatedBooksList = books.map(b => b.id === updatedBook.id ? updatedBook : b )
+        setBooks(updatedBooksList)
     }
 
     const onDeleteBook = (id) => {
@@ -75,6 +79,7 @@ const UserProvider = ({children}) => {
         books: displayBooks,
         updateSearch,
         addBook,
+        onUpdateBook,
         onDeleteBook
     }}>
         {children}

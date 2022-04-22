@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 const UpdateBookForm = (props) => {
-console.log(props)
   const [book, setBook] = useState(props.book)
   const [errorsList, setErrorsList] = useState([])
 
@@ -19,7 +18,6 @@ console.log(props)
   })
   .then(res => res.json())
   .then(data => {
-    console.log(data)
     if (!data.error && !data.errors){
       props.updateBook(data)
     } else {
@@ -49,6 +47,9 @@ console.log(props)
         <ul>
           {errorsList}
         </ul>
+        <hr/>
+        <hr/>
+        <hr/>
       </form> 
   )
 }
