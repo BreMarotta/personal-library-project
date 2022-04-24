@@ -59,7 +59,6 @@ const UserProvider = ({children}) => {
     }
 
     const onDeleteBook = (id) => {
-        alert(id)
         const updatedBooksList = books.filter(b => b.id !== id)
         setBooks(updatedBooksList)
     }

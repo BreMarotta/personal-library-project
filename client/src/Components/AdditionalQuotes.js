@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const AdditionalQuotes = (props) => {
-
+const AdditionalQuotes = ({quote}) => {
+  console.log(quote)
     return (
-      <div className="additional">
-          <h1>{props.quote}</h1>
-      </div>
+      <ul className="additional">
+          <li>{quote}</li>
+          <br/>
+      </ul>
     )
   }
 
