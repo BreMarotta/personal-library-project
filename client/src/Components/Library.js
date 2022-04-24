@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import Book from './Book'
+import Search from './Search'
 import { UserContext } from './MyContext'
 
 const Library = () => {
@@ -10,6 +11,7 @@ const Library = () => {
   if (loggedIn) {
   return (
     <div>
+      <Search />
       {displayBooks}
     </div>
   )
