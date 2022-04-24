@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
 
-  resources :books
+  resources :books do
+    resources :additional_quotes, only: [:create, :update, :destroy]
+  end
+
+  # resources :additional_quotes
   
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end

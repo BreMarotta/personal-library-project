@@ -1,20 +1,31 @@
-import React, { useState, useContext } from 'react'
-import { UserContext } from './MyContext'
+import React, { useState } from 'react'
 
-const AddQuoteForm = (props) => {
-    console.log(props)
+
+const AddQuoteForm = ({book}) => {
     const [quote, setQuote] = useState("")
-    const [errorsList, setErrorsList] = useState([])
+    // const [errorsList, setErrorsList] = useState([])
+
+    const bookId = book.id
 
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(quote)
+        fetch(`/books/${bookId}/additional_quotes`, {
+          method: "POST",
+          headers: { "content-type": "application/json"},
+          body: JSON.stringify({
+            quote: quote,
+            book_id: bookId
+          })
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
     }
 
   return (
-    <div>
+    <div className="additional">
         <form onSubmit={handleSubmit}>
-            <h3>Add a new quote for {props.book.title}:</h3>
+            <h3>Add a new quote for {book.title}:</h3>
             <hr/>
             <textarea type="text" name="quote" onChange={(e) => setQuote(e.target.value)}/>
             <input type="submit"/>
