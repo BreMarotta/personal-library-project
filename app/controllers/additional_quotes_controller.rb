@@ -15,7 +15,13 @@ class AdditionalQuotesController < ApplicationController
     end
 
     def destroy
-
+        quote = current_book.additional_quotes.find_by(id: params[:id])
+        if quote
+            quote.destroy
+            head :no_content
+        else
+            reder json: { error: "Quote not found"}, status: :not_found
+        end
     end
 
     private

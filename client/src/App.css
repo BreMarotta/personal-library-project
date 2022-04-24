@@ -29,9 +29,10 @@ button {
 }
 
 .additional {
-  background-color: white;
+  text-align: left;
+  background-color: gray;
   float: right;
-  padding-right: 45px;
+  padding-right: 10px;
   width: 350px;
 }
 

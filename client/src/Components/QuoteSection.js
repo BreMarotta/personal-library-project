@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import AdditionalQuotes from './AdditionalQuotes'
+import AdditionalQuote from './AdditionalQuote'
 import AddQuoteForm from './AddQuoteForm'
 
 
-const QuoteSection = ({quotes, book, onAddQuote}) => {
+const QuoteSection = ({quotes, book, onAddQuote, deleteQuote}) => {
+  console.log(book)
     const [formFlag, setFormFlag] = useState(false)
-    const displayQuotes = quotes.map(q => <AdditionalQuotes key={q.id} quote={q.quote}/>)
+
+    const displayQuotes = quotes.map(q => <AdditionalQuote key={q.id} quote={q} deleteQuote={deleteQuote}/>)
 
     const toggleQuoteForm = () => {
       setFormFlag(!formFlag)

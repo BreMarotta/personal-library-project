@@ -37,6 +37,17 @@ const ShowPage = () => {
     setQuotes(updatedQuoteList)
   }
 
+  const deleteQuote = (id) => {
+    fetch(`/books/${book.id}/additional_quotes/${id}`, {
+      method: 'DELETE',
+    }).then(r => {
+      if (r.ok) {
+      const newQuoteList = quotes.filter(q => q.id !==id)
+      setQuotes(newQuoteList)
+      }
+    })
+  }
+
   const displayForm = 
     formFlag === true ? <UpdateBookForm book={book} updateBook={updateBook} /> : ""
 
@@ -54,7 +65,7 @@ const ShowPage = () => {
   if (loggedIn) {
     return (
       <div>
-        <QuoteSection book={book} quotes={quotes} onAddQuote={onAddQuote}/>
+        <QuoteSection book={book} quotes={quotes} onAddQuote={onAddQuote} deleteQuote={deleteQuote}/>
         {displayForm}
         <h3>{book.title}</h3>
         <h4>by {book.author}</h4>
