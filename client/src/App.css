@@ -29,6 +29,7 @@ button {
 }
 
 .additional {
+  background-color: white;
   float: right;
   padding-right: 45px;
   width: 350px;

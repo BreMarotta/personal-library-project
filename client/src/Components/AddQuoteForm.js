@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 
 
-const AddQuoteForm = ({book}) => {
+const AddQuoteForm = ({book, onAddQuote, toggleQuoteForm}) => {
     const [quote, setQuote] = useState("")
+    
     // const [errorsList, setErrorsList] = useState([])
 
     const bookId = book.id
@@ -19,7 +20,10 @@ const AddQuoteForm = ({book}) => {
           })
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+          onAddQuote(data)
+          toggleQuoteForm()
+        })
     }
 
   return (
