@@ -68,8 +68,9 @@ const ShowPage = () => {
         <QuoteSection book={book} quotes={quotes} onAddQuote={onAddQuote} deleteQuote={deleteQuote}/>
         {displayForm}
         <h3>{book.title}</h3>
-        <h4>by {book.author}</h4>
-        <h4>Favorite quote: {book.favorite_quote}</h4>
+        <h5>by {book.author}</h5>
+        <h4>Favorite quote: </h4>
+        <p className="favorite">"{book.favorite_quote}"</p>
         <br/>
         <hr/>
         <button onClick={toggleEditForm}>Edit Book Details</button>
@@ -79,7 +80,7 @@ const ShowPage = () => {
     )
   } else {
     return (
-      <h3>Not Authorized - Please Login or Signup</h3>
+      <h3 className="unauthroized"> Not Authorized - Please Login or Signup</h3>
     )
   }
   

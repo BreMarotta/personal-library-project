@@ -29,7 +29,7 @@ const AddQuoteForm = ({book, onAddQuote, toggleQuoteForm}) => {
   return (
     <div className="additional">
         <form onSubmit={handleSubmit}>
-            <h3>Add a new quote for {book.title}:</h3>
+            <h4>Add a new quote:</h4>
             <hr/>
             <textarea type="text" name="quote" onChange={(e) => setQuote(e.target.value)}/>
             <input type="submit"/>

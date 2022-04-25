@@ -17,7 +17,7 @@ const Library = () => {
   )
   } else {
     return (
-      <h3>Not Authorized - Please Login or Signup</h3>
+      <h3 className="unauthroized"> Not Authorized - Please Login or Signup</h3>
     )
   }
 }

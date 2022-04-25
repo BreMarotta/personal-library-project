@@ -37,7 +37,7 @@ const AddBookForm = () => {
 
  if (loggedIn) {
   return (
-    <div className="addBookForm">
+    <div className="form">
     <form onSubmit={handleSubmit}>
       <h3>Add a book to your library:</h3>
       <hr/>
@@ -75,7 +75,7 @@ const AddBookForm = () => {
   )
 } else {
   return (
-    <h3>Not Authorized - Please Login or Signup</h3>
+    <h3 className="unauthroized"> Not Authorized - Please Login or Signup</h3>
   )
 }
 }

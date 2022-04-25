@@ -33,7 +33,7 @@ const Navigation = () => {
       )
     } else {
       return (
-        <div>
+        <div className= "navigation">
           <NavLink to='/login' exact className="linkStyles" >Login</NavLink>
           <NavLink to='/signup' exact className="linkStyles" >Signup</NavLink>
           <hr/>

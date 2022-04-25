@@ -8,9 +8,9 @@ const AdditionalQuote = ({quote, deleteQuote}) => {
   }
     return (
       <ul className="additional">
-          <li>{quote.quote}<button onClick={handleDeleteQuote}>X</button></li>
+          <li>"{quote.quote}"  <button className="addButton" onClick={handleDeleteQuote}>x</button></li>
           
-          <br/>
+          <hr/>
       </ul>
     )
   }
