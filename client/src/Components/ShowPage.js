@@ -64,7 +64,7 @@ const ShowPage = () => {
 
   if (loggedIn) {
     return (
-      <div>
+      <div className="showpage">
         <QuoteSection book={book} quotes={quotes} onAddQuote={onAddQuote} deleteQuote={deleteQuote}/>
         {displayForm}
         <h3>{book.title}</h3>

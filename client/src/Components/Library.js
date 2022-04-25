@@ -10,7 +10,7 @@ const Library = () => {
   
   if (loggedIn) {
   return (
-    <div>
+    <div className="library">
       <Search />
       {displayBooks}
     </div>

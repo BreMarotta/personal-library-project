@@ -16,7 +16,7 @@ const QuoteSection = ({quotes, book, onAddQuote, deleteQuote}) => {
     const displayForm = formFlag === true ? <AddQuoteForm book={book} onAddQuote={onAddQuote} toggleQuoteForm={toggleQuoteForm}/> : ""
 
   return (
-    <div className="additional">
+    <div className="additionalContainer">
         <h3>Additional Quotes</h3>
         <ul>{displayQuotes}</ul>  
         <button onClick={toggleQuoteForm}>Add a New Quote</button> 

@@ -6,7 +6,7 @@ const Home = () => {
 
     if (loggedIn){
         return (
-            <div>
+            <div className="home">
                 <h3>{user.username}'s Personal Library</h3>
                 
             </div>
