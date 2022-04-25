@@ -13,6 +13,7 @@ import ShowPage from './Components/ShowPage';
 function App() {
   return (
     <div className="App">
+
       <UserProvider>
         {/* <Home /> */}
         <Navigation />
