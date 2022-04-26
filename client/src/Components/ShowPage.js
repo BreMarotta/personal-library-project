@@ -67,15 +67,15 @@ const ShowPage = () => {
       <div className="showpage">
         <QuoteSection book={book} quotes={quotes} onAddQuote={onAddQuote} deleteQuote={deleteQuote}/>
         {displayForm}
+        <button onClick={toggleEditForm}>Edit Book Details</button> 
+        <button onClick={handleDeleteBook}>Delete Book From Library</button>
         <h3>{book.title}</h3>
         <h5>by {book.author}</h5>
         <h4>Favorite quote: </h4>
         <p className="favorite">"{book.favorite_quote}"</p>
         <br/>
         <hr/>
-        <button onClick={toggleEditForm}>Edit Book Details</button>
         
-        <button onClick={handleDeleteBook}>Delete Book From Library</button>
       </div>
     )
   } else {

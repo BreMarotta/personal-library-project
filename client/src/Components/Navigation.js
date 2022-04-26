@@ -22,7 +22,7 @@ const Navigation = () => {
     if (loggedIn) {
       return (
         <div className= "navigation">
-            <h1>{user.username}'s Personal Library</h1>
+            <h1 className="title">{user.username}'s Personal Library</h1>
             <NavLink to="/" exact className= "linkStyles" >Home</NavLink>
             <NavLink to="/library" exact className= "linkStyles">Library</NavLink>
             <NavLink to='/new' exact className="linkStyles" >Add a Book</NavLink>

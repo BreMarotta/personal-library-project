@@ -18,9 +18,10 @@ const QuoteSection = ({quotes, book, onAddQuote, deleteQuote}) => {
   return (
     <div className="additionalContainer">
         <h3>Additional Quotes</h3>
-        <ul>{displayQuotes}</ul>  
         <button onClick={toggleQuoteForm}>Add a New Quote</button> 
-        {displayForm}     
+        {displayForm}  
+        <ul>{displayQuotes}</ul>  
+           
         
     </div>
   )
