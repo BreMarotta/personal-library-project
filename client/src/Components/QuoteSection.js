@@ -4,7 +4,6 @@ import AddQuoteForm from './AddQuoteForm'
 
 
 const QuoteSection = ({quotes, book, onAddQuote, deleteQuote}) => {
-  console.log(book)
     const [formFlag, setFormFlag] = useState(false)
 
     const displayQuotes = quotes.map(q => <AdditionalQuote key={q.id} quote={q} deleteQuote={deleteQuote}/>)

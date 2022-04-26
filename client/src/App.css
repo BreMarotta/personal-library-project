@@ -6,9 +6,10 @@
 }
 
 .navigation {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLltXqVvPQ88xzwC9T3gPPP15ZAqmCLNm5cQ&usqp=CAU");
-  text-align: center;
+  background-image: url("https://cdn.pixabay.com/photo/2016/09/10/17/18/book-1659717__480.jpg");
+  text-align: left;
   padding: 8px;
+  padding-left: 50px;
   color: black;
   text-shadow: gray;
 }
@@ -17,10 +18,15 @@
   border-top: 10px;
   padding-bottom: 10px;
   padding: 10px;
-  color: black;
+  color: linen;
   font-weight: 650;
-  background-color: rgba(250, 235, 215, 0.7);
+  background-color: rgba(77, 65, 65, 0.9);
   border-radius: 8px;
+}
+
+.title {
+  width: 550px;
+  background-color: rgba(77, 65, 65, 0.7);
 }
 
 .search{

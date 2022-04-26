@@ -18,7 +18,6 @@ const ShowPage = () => {
         .then(data => {
             setQuotes(data.additional_quotes)
             setBook(data)
-            console.log(quotes)
         })
       }, [])
 
@@ -66,13 +65,17 @@ const ShowPage = () => {
     return (
       <div className="showpage">
         <QuoteSection book={book} quotes={quotes} onAddQuote={onAddQuote} deleteQuote={deleteQuote}/>
-        {displayForm}
+
+
         <button onClick={toggleEditForm}>Edit Book Details</button> 
         <button onClick={handleDeleteBook}>Delete Book From Library</button>
+        {displayForm}
+        <h6>Rating: {book.personal_rating}/5</h6>
         <h3>{book.title}</h3>
         <h5>by {book.author}</h5>
         <h4>Favorite quote: </h4>
-        <p className="favorite">"{book.favorite_quote}"</p>
+        <p className="favorite">{book.favorite_quote}</p>
+        
         <br/>
         <hr/>
         
