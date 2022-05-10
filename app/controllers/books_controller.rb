@@ -2,7 +2,7 @@ class BooksController < ApplicationController
     before_action :authorize
 
     def index 
-        books = current_user.books
+        books = current_user.books.sort_order
         render json: books
     end
 

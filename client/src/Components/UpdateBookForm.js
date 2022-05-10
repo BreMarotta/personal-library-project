@@ -48,9 +48,6 @@ const UpdateBookForm = (props) => {
         <ul>
           {errorsList}
         </ul>
-        <hr/>
-        <hr/>
-        <hr/>
       </form> 
   )
 }
