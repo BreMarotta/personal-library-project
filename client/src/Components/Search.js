@@ -5,7 +5,7 @@ const Search = () => {
     const {updateSearch} = useContext(UserContext)
   return (
     <form className="search">
-        <button onClick={(e) => e.preventDefault()}>🔍</button>
+        <span>🔎 </span>
         <input 
             className="searchbar"
             type="text" 

@@ -10,6 +10,7 @@
   text-align: left;
   padding: 8px;
   padding-left: 50px;
+  padding-right: 50px;
   color: black;
   text-shadow: gray;
 }
@@ -29,14 +30,9 @@
   background-color: rgba(77, 65, 65, 0.7);
 }
 
-.search{
-  float: right;
-  padding-right: 45px;
-}
-
 .searchbar {
   width: 450px;
-
+  border-color: black;
 }
 button {
   background-color: linen;
@@ -50,9 +46,18 @@ button {
   color: #ccc;
 }
 
-.addButton {
-  background-color: linen;
-  border-color: whitesmoke;
+.deleteButton {
+  background-color: white;
+  border-color: linen;
+}
+
+.logoutButton {
+  float: right;
+  color: linen;
+  font-weight: 450;
+  background-color: rgba(77, 65, 65, 0.9);
+  border-radius: 4px;
+  border-color: rgba(77, 65, 65, 0.9);
 }
 
 .additionalContainer {

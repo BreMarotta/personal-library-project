@@ -12,7 +12,6 @@ const ShowPage = () => {
   const [book, setBook] = useState({})
   const [quotes, setQuotes] = useState([])
   const [formFlag, setFormFlag] = useState(false)
-  const [detailsFlag, setDetailsFlag] = useState(true)
 
   useEffect(() => {
     fetch(`/books/${params.id}`)
@@ -50,10 +49,14 @@ const ShowPage = () => {
   }
 
   const display = 
-    formFlag === true ? <UpdateBookForm book={book} updateBook={updateBook} /> : <div><h3>{book.title} <StarRating personal_rating={book.personal_rating}/></h3>
-    <h5>by {book.author}</h5>
-    <h4>Favorite quote: </h4>
-    <p className="favorite">{book.favorite_quote}</p></div>
+    formFlag === true ? 
+      <UpdateBookForm book={book} updateBook={updateBook} /> : 
+      <div>
+        <h3>{book.title} <StarRating personal_rating={book.personal_rating}/></h3>
+        <h5>by {book.author}</h5>
+        <h4>Favorite quote: </h4>
+        <p className="favorite">{book.favorite_quote}</p>
+      </div>
 
   const handleDeleteBook = () => {
     fetch(`/books/${book.id}`, {
@@ -73,10 +76,8 @@ const ShowPage = () => {
         <button onClick={toggleEditForm}>Edit Book Details</button> 
         <button onClick={handleDeleteBook}>Delete Book From Library</button>
         {display}
-
         <br/>
-        <hr/>
-        
+        <hr/>        
       </div>
     )
   } else {

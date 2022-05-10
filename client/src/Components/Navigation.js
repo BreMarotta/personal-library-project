@@ -22,20 +22,21 @@ const Navigation = () => {
     if (loggedIn) {
       return (
         <div className= "navigation">
+            <button className="logoutButton" onClick={logoutUser}>Logout</button>
             <h1 className="title">{user.username}'s Personal Library</h1>
-            <NavLink to="/" exact className= "linkStyles" >Home</NavLink>
-            <NavLink to="/library" exact className= "linkStyles">Library</NavLink>
-            <NavLink to='/new' exact className="linkStyles" >Add a Book</NavLink>
+            <NavLink to="/" className= "linkStyles" >Home</NavLink>
+            <NavLink to="/library" className= "linkStyles">Library</NavLink>
+            <NavLink to='/new' className="linkStyles" >Add a Book</NavLink>
             
-            <button onClick={logoutUser}>Logout</button>
+            
             <hr/>
         </div>
       )
     } else {
       return (
         <div className= "navigation">
-          <NavLink to='/login' exact className="linkStyles" >Login</NavLink>
-          <NavLink to='/signup' exact className="linkStyles" >Signup</NavLink>
+          <NavLink to='/login' className="linkStyles" >Login</NavLink>
+          <NavLink to='/signup' className="linkStyles" >Signup</NavLink>
           <hr/>
         </div>
       )

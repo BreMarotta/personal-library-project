@@ -11,7 +11,7 @@ const AdditionalQuote = ({quote, deleteQuote}) => {
     setDeleteFlag(!deleteFlag)
   }
 
-  const displayDelete = deleteFlag === true ? <button className="addButton" onClick={handleDeleteQuote}>🗑️</button> : ""
+  const displayDelete = deleteFlag === true ? <button className="deleteButton" onClick={handleDeleteQuote}>🗑️</button> : ""
     return (
       <ul className="additional">
           <li onMouseEnter={toggleDelete} onMouseLeave={toggleDelete}>"{quote.quote}" {displayDelete}</li>          
