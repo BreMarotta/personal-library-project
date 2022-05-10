@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const AdditionalQuote = ({quote, deleteQuote}) => {
+  const [deleteFlag, setDeleteFlag] = useState(false)
 
   const handleDeleteQuote = () => {
     deleteQuote(quote.id)
   }
+
+  const toggleDelete = () => {
+    setDeleteFlag(!deleteFlag)
+  }
+
+  const displayDelete = deleteFlag === true ? <button className="addButton" onClick={handleDeleteQuote}>🗑️</button> : ""
     return (
       <ul className="additional">
-          <li>"{quote.quote}"  <button className="addButton" onClick={handleDeleteQuote}>x</button></li>
-          
+          <li onMouseEnter={toggleDelete} onMouseLeave={toggleDelete}>"{quote.quote}" {displayDelete}</li>          
           <hr/>
       </ul>
     )
