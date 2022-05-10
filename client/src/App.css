@@ -43,6 +43,13 @@ button {
   border-color: darkslategray;
 }
 
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
+}
+
 .addButton {
   background-color: linen;
   border-color: whitesmoke;

@@ -41,13 +41,13 @@ const AddBookForm = () => {
     <form onSubmit={handleSubmit}>
       <h3>Add a book to your library:</h3>
       <hr/>
-      <label>Title:</label>
+      <label>Title: </label>
       <input 
         type="text"
         name="title"
         onChange={(e) => setTitle(e.target.value)}/>
         <br/>
-      <label>Author:</label>
+      <label>Author: </label>
       <input 
         type="text"
         name="author"

@@ -3,6 +3,7 @@ import { UserContext } from './MyContext'
 import { useParams, useNavigate } from 'react-router-dom'
 import UpdateBookForm from './UpdateBookForm'
 import QuoteSection from './QuoteSection'
+import StarRating from './StarRating'
 
 const ShowPage = () => {
   const {loggedIn, onUpdateBook, onDeleteBook} = useContext(UserContext)
@@ -65,17 +66,15 @@ const ShowPage = () => {
     return (
       <div className="showpage">
         <QuoteSection book={book} quotes={quotes} onAddQuote={onAddQuote} deleteQuote={deleteQuote}/>
-
-
         <button onClick={toggleEditForm}>Edit Book Details</button> 
         <button onClick={handleDeleteBook}>Delete Book From Library</button>
         {displayForm}
-        <h6>Rating: {book.personal_rating}/5</h6>
-        <h3>{book.title}</h3>
+        
+        <h3>{book.title} <StarRating personal_rating={book.personal_rating}/></h3>
         <h5>by {book.author}</h5>
         <h4>Favorite quote: </h4>
         <p className="favorite">{book.favorite_quote}</p>
-        
+
         <br/>
         <hr/>
         
