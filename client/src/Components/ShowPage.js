@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import UpdateBookForm from './UpdateBookForm'
 import QuoteSection from './QuoteSection'
 import StarRating from './StarRating'
+import Location from './Location'
 
 const ShowPage = () => {
   const {loggedIn, onUpdateBook, onDeleteBook} = useContext(UserContext)
@@ -58,6 +59,10 @@ const ShowPage = () => {
         <p className="favorite">{book.favorite_quote}</p>
       </div>
 
+  const bookBorrowed = 
+    book.lent_to != null || "" ? 
+      <Location lent_to={book.lent_to} /> : ""
+
   const handleDeleteBook = () => {
     fetch(`/books/${book.id}`, {
       method: "DELETE", 
@@ -75,6 +80,7 @@ const ShowPage = () => {
         <QuoteSection book={book} quotes={quotes} onAddQuote={onAddQuote} deleteQuote={deleteQuote}/>
         <button onClick={toggleEditForm}>Edit Book Details</button> 
         <button onClick={handleDeleteBook}>Delete Book From Library</button>
+        {bookBorrowed}
         {display}
         <br/>
         <hr/>        

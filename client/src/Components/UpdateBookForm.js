@@ -44,6 +44,9 @@ const UpdateBookForm = (props) => {
         <label>Personal Rating: </label>
           <input type="integer" name="personal_rating" defaultValue={book.personal_rating} onChange={handleChange}/>
             <br/>
+        <label>Book Borrowed By: </label>
+          <input type="text" name="lent_to" defaultValue={book.lent_to} onChange={handleChange}/>
+            <br/>
         <input type="submit"/>
         <ul>
           {errorsList}
