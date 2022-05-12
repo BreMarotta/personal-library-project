@@ -9,6 +9,7 @@ const AddBookForm = () => {
   const [author, setAuthor] = useState("")
   const [favoriteQuote, setFavoriteQuote] = useState("")
   const [personalRating, setPersonalRating] = useState(0)
+  const [lent, setLent] = useState("")
   const [errorsList, setErrorsList] = useState([])
 
   const handleSubmit = (e) => {
@@ -20,7 +21,8 @@ const AddBookForm = () => {
         title: title,
         author: author,
         favorite_quote: favoriteQuote,
-        personal_rating: personalRating
+        personal_rating: personalRating,
+        lent_to: lent
       })
   })
   .then(res => res.json())
@@ -64,6 +66,12 @@ const AddBookForm = () => {
         type="integer"
         name="personalRating"
         onChange={(e) => setPersonalRating(e.target.value)}/>
+        <br/>
+        <label>Book Borrowed By: </label>
+      <input 
+        type="text"
+        name="lent_to"
+        onChange={(e) => setLent(e.target.value)}/>
         <br/>
         <input type="submit"/>
 

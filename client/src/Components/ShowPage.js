@@ -60,7 +60,7 @@ const ShowPage = () => {
       </div>
 
   const bookBorrowed = 
-    book.lent_to != null || "" ? 
+    book.lent_to !=  "" ? 
       <Location lent_to={book.lent_to} /> : ""
 
   const handleDeleteBook = () => {
