@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StarRating = ({ personal_rating }) => {
+const StarRating = ({ rating }) => {
     return (
       <div className="star-rating">
         {[...Array(5)].map((star, index) => {
@@ -8,7 +8,7 @@ const StarRating = ({ personal_rating }) => {
           return (
             <span
               key={index}
-              className={index <= personal_rating ? "on" : "off"}>
+              className={index <= rating ? "on" : "off"}>
               <span className="star">&#9733;</span>
             </span>
           );

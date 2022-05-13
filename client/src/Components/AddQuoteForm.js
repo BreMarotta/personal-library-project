@@ -11,7 +11,7 @@ const AddQuoteForm = ({book, onAddQuote, toggleQuoteForm}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(quote)
-        fetch(`/books/${bookId}/additional_quotes`, {
+        fetch(`/books/${bookId}/quotes`, {
           method: "POST",
           headers: { "content-type": "application/json"},
           body: JSON.stringify({
@@ -21,7 +21,8 @@ const AddQuoteForm = ({book, onAddQuote, toggleQuoteForm}) => {
         })
         .then(res => res.json())
         .then(data => {
-          onAddQuote(data)
+          console.log(data)
+          onAddQuote(quote)
           toggleQuoteForm()
         })
     }

@@ -41,11 +41,11 @@ const UpdateBookForm = (props) => {
         <label>Favorite Quote: </label>
           <textarea type="text" name="favorite_quote" defaultValue={book.favorite_quote} onChange={handleChange}/>
             <br/>
-        <label>Personal Rating: </label>
-          <input type="integer" name="personal_rating" defaultValue={book.personal_rating} onChange={handleChange}/>
+        <label>Rating: </label>
+          <input type="integer" name="rating" defaultValue={book.rating} onChange={handleChange}/>
             <br/>
         <label>Book Borrowed By: </label>
-          <input type="text" name="lent_to" defaultValue={book.lent_to} onChange={handleChange}/>
+          <input type="text" name="lent" defaultValue={book.lent} onChange={handleChange}/>
             <br/>
         <input type="submit"/>
         <ul>

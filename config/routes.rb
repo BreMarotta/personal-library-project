@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
 
   resources :books do
-    resources :additional_quotes, only: [:create, :update, :destroy]
+    resources :quotes, only: [:create, :update, :destroy]
   end
+
+  resources :categories, only: [:create, :index]
 
   # resources :additional_quotes
   

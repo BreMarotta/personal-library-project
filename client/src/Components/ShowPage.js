@@ -18,7 +18,7 @@ const ShowPage = () => {
     fetch(`/books/${params.id}`)
         .then(res => res.json())
         .then(data => {
-            setQuotes(data.additional_quotes)
+            setQuotes(data.quotes)
             setBook(data)
         })
       }, [])
@@ -39,7 +39,7 @@ const ShowPage = () => {
   }
 
   const deleteQuote = (id) => {
-    fetch(`/books/${book.id}/additional_quotes/${id}`, {
+    fetch(`/books/${book.id}/quotes/${id}`, {
       method: 'DELETE',
     }).then(r => {
       if (r.ok) {
@@ -53,15 +53,15 @@ const ShowPage = () => {
     formFlag === true ? 
       <UpdateBookForm book={book} updateBook={updateBook} /> : 
       <div>
-        <h3>{book.title} <StarRating personal_rating={book.personal_rating}/></h3>
+        <h3>{book.title} <StarRating rating={book.rating}/></h3>
         <h5>by {book.author}</h5>
         <h4>Favorite quote: </h4>
         <p className="favorite">{book.favorite_quote}</p>
       </div>
 
   const bookBorrowed = 
-    book.lent_to !=  "" ? 
-      <Location lent_to={book.lent_to} /> : ""
+    book.lent !=  "" ? 
+      <Location lent={book.lent} /> : ""
 
   const handleDeleteBook = () => {
     fetch(`/books/${book.id}`, {

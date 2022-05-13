@@ -7,7 +7,7 @@ const Book = (props) => {
   return (
     <div>
       <Link to={`/library/${props.book.id}`} >
-        <h5 style={{color: "black", underline: "black"}}>{props.book.title} by {props.book.author} <StarRating personal_rating={props.book.personal_rating}/></h5>
+        <h5 style={{color: "black", underline: "black"}}>{props.book.title} by {props.book.author} <StarRating rating={props.book.rating}/></h5>
       </Link>
     </div>
   )
