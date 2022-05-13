@@ -37,6 +37,8 @@ const UpdateBookForm = (props) => {
         <label>Author:</label>
           <input type="text" name="author" defaultValue={book.author} onChange={handleChange}/>
             <br/>
+        <lable>Genre:</lable>
+          
         <label>Favorite Quote: </label>
           <textarea type="text" name="favorite_quote" defaultValue={book.favorite_quote} onChange={handleChange}/>
             <br/>
