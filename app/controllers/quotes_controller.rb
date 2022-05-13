@@ -2,9 +2,10 @@ class QuotesController < ApplicationController
     
 
     def create
+
         new_quote = current_book.quotes.create(quote_params)
         if new_quote.valid?
-            render json: new_quote, include: :current_book,  status: :created
+            render json: new_quote,  status: :created
         else
             render json: {errors: quote.errors.full_messages}, status: :unprocessable_entity
         end
@@ -35,7 +36,7 @@ class QuotesController < ApplicationController
     end
 
     def quote_params
-        params.permit(:id, :book_id, :quote)
+        params.require(:quote).permit(:text, :love, :book_id)
     end
 
 end

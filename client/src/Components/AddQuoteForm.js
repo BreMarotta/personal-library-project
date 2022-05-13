@@ -15,14 +15,14 @@ const AddQuoteForm = ({book, onAddQuote, toggleQuoteForm}) => {
           method: "POST",
           headers: { "content-type": "application/json"},
           body: JSON.stringify({
-            quote: quote,
+            text: quote,
             book_id: bookId
           })
         })
         .then(res => res.json())
         .then(data => {
           console.log(data)
-          onAddQuote(quote)
+          onAddQuote(data)
           toggleQuoteForm()
         })
     }
@@ -32,7 +32,7 @@ const AddQuoteForm = ({book, onAddQuote, toggleQuoteForm}) => {
         <form onSubmit={handleSubmit}>
             <h4>Add a new quote:</h4>
             <hr/>
-            <textarea type="text" name="quote" onChange={(e) => setQuote(e.target.value)}/>
+            <textarea type="text" name="text" onChange={(e) => setQuote(e.target.value)}/>
             <input type="submit"/>
         </form>
     </div>

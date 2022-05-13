@@ -10,6 +10,7 @@ const AddBookForm = () => {
   const [favoriteQuote, setFavoriteQuote] = useState("")
   const [rating, setRating] = useState(0)
   const [lent, setLent] = useState("")
+  const [category, setCategory] = useState(1)
   const [errorsList, setErrorsList] = useState([])
 
   const handleSubmit = (e) => {
@@ -22,12 +23,14 @@ const AddBookForm = () => {
         author: author,
         favorite_quote: favoriteQuote,
         rating: rating,
-        lent: lent
+        lent: lent,
+        category_id: category
       })
   })
   .then(res => res.json())
   .then(data => {
       if (!data.errors){
+        console.log(data)
       addBook(data)
       navigate('/library')
   } else {

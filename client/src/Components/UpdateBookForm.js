@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 const UpdateBookForm = (props) => {
   const [book, setBook] = useState(props.book)
   const [errorsList, setErrorsList] = useState([])
-  console.log(props)
 
   const handleChange = (e) => {
     setBook({ 
