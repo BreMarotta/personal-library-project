@@ -9,6 +9,7 @@ const UserProvider = ({children}) => {
     const [search, setSearch] = useState("")
     const [books, setBooks] = useState([])
     const [categories, setCategories] = useState([])
+    const [filterId, setFilterId] = useState("")
 
     useEffect(() => {
         fetch('/me')
@@ -48,22 +49,45 @@ const UserProvider = ({children}) => {
         fetch('/books')
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             setBooks(data)
         })
     }
+    
+    const addBook = (book) => {
+        setBooks([...books, book])
+    }
+
+    const uniqueCategories = (books) => {
+        const flag = {};
+        const unique = [];
+        books.forEach(b => {
+            if (!flag[b.category.id]) {
+                flag[b.category.id] = true;
+                unique.push(b.category);
+            }
+        });
+        return unique;
+    }
+
+    const userCategories = uniqueCategories(books)
+
+    const filterBooks = (id) => {
+        setFilterId(id)  
+        console.log(filterId)  
+      }
+
 
     const fetchCategories = () => {
         fetch('/categories')
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setCategories(data)
         })
     }
 
-    const addBook = (book) => {
-        setBooks([...books, book])
+    const addCategory = (category) => {
+        setCategories([...categories, category])
     }
 
     const onUpdateBook = (updatedBook) => {
@@ -80,7 +104,7 @@ const UserProvider = ({children}) => {
         setSearch(searchedInfo)
     }
 
-    const displayBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase()) || book.author.toLowerCase().includes(search.toLowerCase()));
+    const displayBooks = books.filter((book) =>   book.title.toLowerCase().includes(search.toLowerCase()) || book.author.toLowerCase().includes(search.toLowerCase()));
 
   return (
     <UserContext.Provider value= {{
@@ -95,7 +119,10 @@ const UserProvider = ({children}) => {
         addBook,
         onUpdateBook,
         onDeleteBook,
-        categories
+        categories,
+        addCategory,
+        userCategories,
+        filterBooks
     }}>
         {children}
     </UserContext.Provider>

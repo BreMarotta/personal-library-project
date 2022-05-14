@@ -1,8 +1,7 @@
 class CategoriesController < ApplicationController
 
-    def index
-        
-        render json: Category.all
+    def index        
+        render json: Category.all.sort_order
     end
     
     def create 
@@ -15,10 +14,6 @@ class CategoriesController < ApplicationController
     end
 
     private 
-
-    def current_user
-        User.find_by(id: session[:user_id])
-    end
 
     def category_params
         params.permit(:category, :name)

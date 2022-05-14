@@ -25,6 +25,12 @@
   border-radius: 8px;
 }
 
+.genre {
+  color: black;
+  border-style: none;
+  border-bottom: black;
+}
+
 .title {
   width: 550px;
   background-color: rgba(77, 65, 65, 0.7);

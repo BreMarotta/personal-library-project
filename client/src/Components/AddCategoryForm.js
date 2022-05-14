@@ -4,7 +4,7 @@ import { UserContext} from './MyContext'
 
 
 const AddCategoryForm = () => {
-    const {loggedIn, addCategory} = useContext(UserContext)
+    const {loggedIn, categories, addCategory} = useContext(UserContext)
     const navigate = useNavigate()
     const [name, setName] = useState("")
     const [errorsList, setErrorsList] = useState([])
@@ -21,6 +21,7 @@ const AddCategoryForm = () => {
             if(!data.errors){
                 console.log(data)
                 navigate('/library')
+                addCategory(data)
             } else {
                 const errorsLis = data.errors.map(e => <li>{e}</li>)
                 setErrorsList(errorsLis)
@@ -28,14 +29,21 @@ const AddCategoryForm = () => {
         })
     }
 
+    const categoryLis = categories.map(x => <li key={x.id}>{x.name}</li>)
+
     if (loggedIn) {
         return (
-            <div className="form">AddCategoryForm 
-
-                <form onSubmit={handleSubmit}>
-                    <h3>Add New Category:</h3>
+            <div> 
+                <div className="additionalContainer">
+                    <h3>Available Genres: </h3>
+                    <ul>
+                        {categoryLis}
+                    </ul>
+                </div>
+                <form className="form" onSubmit={handleSubmit}>
+                    <h3>Add New Genre:</h3>
                     <hr/>
-                    <label>Category Name: </label>
+                    <label>Genre Name: </label>
                     <input  
                         type="text"
                         name="name"
