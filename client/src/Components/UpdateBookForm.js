@@ -15,7 +15,7 @@ const UpdateBookForm = (props) => {
     if (!data.error && !data.errors){
       props.updateBook(data)
     } else {
-      const errorsLis = data.errors.map(e => <li>{e}</li>)
+      const errorsLis = data.errors.map(e => <li key={e.id}>{e}</li>)
       setErrorsList(errorsLis)
     }
   })

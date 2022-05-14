@@ -23,7 +23,7 @@ const AddBookForm = () => {
       addBook(data)
       navigate('/library')
   } else {
-      const errorsLis = data.errors.map(e => <li>{e}</li>)
+      const errorsLis = data.errors.map(e => <li key={e.id}>{e}</li>)
       setErrorsList(errorsLis)
   }
   })

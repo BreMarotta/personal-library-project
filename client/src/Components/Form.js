@@ -5,12 +5,17 @@ import { UserContext } from './MyContext'
 const Form = ({book, onSubmitForm}) => {
     const { categories } = useContext(UserContext)
 
+    const d = (book.category !== undefined || null ? book.category.id : 0 )
+    const b = (book.lent == null ? "" : book.lent)
+
     const [title, setTitle] = useState(book.title)
     const [author, setAuthor] = useState(book.author)
     const [favoriteQuote, setFavoriteQuote] = useState(book.favorite_quote)
     const [rating, setRating] = useState(book.rating)
-    const [lent, setLent] = useState(book.lent)
-    const [category, setCategory] = useState(0) 
+    const [lent, setLent] = useState(b)
+    const [category, setCategory] = useState(d) 
+
+    
     
     const dropDown = categories.map(x => <option value={x.id} key={x.id}>{x.name}</option>)
 
@@ -52,6 +57,13 @@ const Form = ({book, onSubmitForm}) => {
                 onChange={(e) => setAuthor(e.target.value)}/>
                 <br/>
 
+        <label>Genre: </label>
+            <select onChange={handleCategorySelect}>
+                <option defaultValue={x}>{y}</option>
+            {dropDown}
+            </select>
+            <br/>
+
         <label>Favorite Quote: </label>
             <textarea 
                 type="text"
@@ -59,13 +71,6 @@ const Form = ({book, onSubmitForm}) => {
                 defaultValue={book.favorite_quote}
                 onChange={(e) => setFavoriteQuote(e.target.value)}/>
                 <br/>
-        
-        <label>Genre: </label>
-            <select onChange={handleCategorySelect}>
-                <option defaultValue={x}>{y}</option>
-            {dropDown}
-            </select>
-            <br/>
 
         <label>Rating: </label>
             <input 
@@ -79,7 +84,7 @@ const Form = ({book, onSubmitForm}) => {
             <input 
                 type="text"
                 name="lent"
-                defaultValue={book.lent}
+                defaultValue={b}
                 onChange={(e) => setLent(e.target.value)}/>
                 <br/>
 
