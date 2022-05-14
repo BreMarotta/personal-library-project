@@ -1,31 +1,20 @@
 import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from './MyContext'
+import Form from './Form'
+
 
 const AddBookForm = () => {
   const {loggedIn, addBook} = useContext(UserContext)
   const navigate = useNavigate()
-  const [title, setTitle] = useState("")
-  const [author, setAuthor] = useState("")
-  const [favoriteQuote, setFavoriteQuote] = useState("")
-  const [rating, setRating] = useState(0)
-  const [lent, setLent] = useState("")
-  const [category, setCategory] = useState(1)
   const [errorsList, setErrorsList] = useState([])
+  const book = ""
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const onSubmitForm = (bookObject) => {
     fetch('/books', {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        title: title,
-        author: author,
-        favorite_quote: favoriteQuote,
-        rating: rating,
-        lent: lent,
-        category_id: category
-      })
+      body: JSON.stringify(bookObject)
   })
   .then(res => res.json())
   .then(data => {
@@ -43,45 +32,12 @@ const AddBookForm = () => {
  if (loggedIn) {
   return (
     <div className="form">
-    <form onSubmit={handleSubmit}>
       <h3>Add a book to your library:</h3>
       <hr/>
-      <label>Title: </label>
-      <input 
-        type="text"
-        name="title"
-        onChange={(e) => setTitle(e.target.value)}/>
-        <br/>
-      <label>Author: </label>
-      <input 
-        type="text"
-        name="author"
-        onChange={(e) => setAuthor(e.target.value)}/>
-        <br/>
-      <label>Favorite Quote: </label>
-      <textarea 
-        type="text"
-        name="favoriteQuote"
-        onChange={(e) => setFavoriteQuote(e.target.value)}/>
-        <br/>
-      <label>Rating: </label>
-      <input 
-        type="integer"
-        name="rating"
-        onChange={(e) => setRating(e.target.value)}/>
-        <br/>
-        <label>Book Borrowed By: </label>
-      <input 
-        type="text"
-        name="lent"
-        onChange={(e) => setLent(e.target.value)}/>
-        <br/>
-        <input type="submit"/>
-
-    </form>
-    <ul>
-      {errorsList}
-    </ul>
+      <Form book={book} onSubmitForm={onSubmitForm}/>
+      <ul>
+        {errorsList}
+      </ul>
     </div>
   )
 } else {

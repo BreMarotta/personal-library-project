@@ -8,6 +8,7 @@ const UserProvider = ({children}) => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [search, setSearch] = useState("")
     const [books, setBooks] = useState([])
+    const [categories, setCategories] = useState([])
 
     useEffect(() => {
         fetch('/me')
@@ -19,6 +20,7 @@ const UserProvider = ({children}) => {
             } else {
                 setLoggedIn(true)
                 fetchBooks()
+                fetchCategories()
             }
         })
     }, [])
@@ -26,6 +28,7 @@ const UserProvider = ({children}) => {
     const login = (user) => {
         setUser(user)
         fetchBooks()
+        fetchCategories()
         setLoggedIn(true)
     }
 
@@ -37,6 +40,7 @@ const UserProvider = ({children}) => {
     const signup = (user) => {
         setUser(user)
         fetchBooks()
+        fetchCategories()
         setLoggedIn(true)
     }
 
@@ -46,6 +50,15 @@ const UserProvider = ({children}) => {
         .then(data => {
             console.log(data)
             setBooks(data)
+        })
+    }
+
+    const fetchCategories = () => {
+        fetch('/categories')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            setCategories(data)
         })
     }
 
@@ -81,7 +94,8 @@ const UserProvider = ({children}) => {
         updateSearch,
         addBook,
         onUpdateBook,
-        onDeleteBook
+        onDeleteBook,
+        categories
     }}>
         {children}
     </UserContext.Provider>

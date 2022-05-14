@@ -1,20 +1,14 @@
 import React, { useState } from 'react'
+import Form from './Form'
 
 const UpdateBookForm = (props) => {
-  const [book, setBook] = useState(props.book)
   const [errorsList, setErrorsList] = useState([])
 
-  const handleChange = (e) => {
-    setBook({ 
-      ...book, [e.target.name]: e.target.value }) 
-  }
-
-  const editBookSubmit = (e) => {
-    e.preventDefault()
-    fetch(`/books/${book.id}`, {
+  const onSubmitForm = (bookObject) => {
+    fetch(`/books/${props.book.id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(book)
+      body: JSON.stringify(bookObject)
   })
   .then(res => res.json())
   .then(data => {
@@ -28,31 +22,15 @@ const UpdateBookForm = (props) => {
   }
 
   return (
-     <form onSubmit={editBookSubmit}>
-        <h4>Edit details for {book.title}:</h4>
-          <hr/>
-        <label>Title:</label>
-          <input type="text" name="title" defaultValue={book.title} onChange={handleChange}/>
-            <br/>
-        <label>Author:</label>
-          <input type="text" name="author" defaultValue={book.author} onChange={handleChange}/>
-            <br/>
-        <lable>Genre:</lable>
-          
-        <label>Favorite Quote: </label>
-          <textarea type="text" name="favorite_quote" defaultValue={book.favorite_quote} onChange={handleChange}/>
-            <br/>
-        <label>Rating: </label>
-          <input type="integer" name="rating" defaultValue={book.rating} onChange={handleChange}/>
-            <br/>
-        <label>Book Borrowed By: </label>
-          <input type="text" name="lent" defaultValue={book.lent} onChange={handleChange}/>
-            <br/>
-        <input type="submit"/>
-        <ul>
-          {errorsList}
-        </ul>
-      </form> 
+    <div>
+      <h4>Edit details for {props.book.title}:</h4>
+      <hr/>
+      <Form book={props.book} onSubmitForm={onSubmitForm}/>
+      <ul>
+        {errorsList}
+      </ul>
+    </div>
+ 
   )
 }
 

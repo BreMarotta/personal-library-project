@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserContext} from './MyContext'
 
+
 const AddCategoryForm = () => {
     const {loggedIn, addCategory} = useContext(UserContext)
     const navigate = useNavigate()
@@ -19,6 +20,7 @@ const AddCategoryForm = () => {
         .then(data => {
             if(!data.errors){
                 console.log(data)
+                navigate('/library')
             } else {
                 const errorsLis = data.errors.map(e => <li>{e}</li>)
                 setErrorsList(errorsLis)
@@ -28,7 +30,8 @@ const AddCategoryForm = () => {
 
     if (loggedIn) {
         return (
-            <div className="form">AddCategoryForm
+            <div className="form">AddCategoryForm 
+
                 <form onSubmit={handleSubmit}>
                     <h3>Add New Category:</h3>
                     <hr/>
