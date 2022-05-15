@@ -19,7 +19,7 @@ const AddCategoryForm = () => {
         .then(res => res.json())
         .then(data => {
             if(!data.errors){
-                console.log(data)
+                // console.log(data)
                 navigate('/library')
                 addCategory(data)
             } else {

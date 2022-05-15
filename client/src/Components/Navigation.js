@@ -17,14 +17,14 @@ const Navigation = () => {
       })
     }
 
-    const activeFunction = (isActive) => {
-      console.log(isActive)
-      if (isActive) {
-        return("trial")
-      } else if (!isActive){
-        return("linkStyles")
-      }
-    }
+    // const activeFunction = (isActive) => {
+    //   console.log(isActive)
+    //   if (isActive) {
+    //     return("trial")
+    //   } else if (!isActive){
+    //     return("linkStyles")
+    //   }
+    // }
 
     // ( isActive == true ? "linkStyles" : "trial"))
     const genreLinks = userCategories.map(c => <NavLink key={c.id} to={`/library/genres/${c.id}`} className="genreStyles">{c.name}</NavLink>)

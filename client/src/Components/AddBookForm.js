@@ -19,7 +19,7 @@ const AddBookForm = () => {
   .then(res => res.json())
   .then(data => {
       if (!data.errors){
-        console.log(data)
+        // console.log(data)
       addBook(data)
       navigate('/library')
   } else {

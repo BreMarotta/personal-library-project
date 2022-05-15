@@ -10,7 +10,7 @@ const AddQuoteForm = ({book, onAddQuote, toggleQuoteForm}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(quote)
+        // console.log(quote)
         fetch(`/books/${bookId}/quotes`, {
           method: "POST",
           headers: { "content-type": "application/json"},
@@ -21,7 +21,7 @@ const AddQuoteForm = ({book, onAddQuote, toggleQuoteForm}) => {
         })
         .then(res => res.json())
         .then(data => {
-          console.log(data)
+          // console.log(data)
           onAddQuote(data)
           toggleQuoteForm()
         })

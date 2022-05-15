@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+    before_action :authorize
 
     def index        
         render json: Category.all.sort_order
@@ -29,5 +30,9 @@ class CategoriesController < ApplicationController
 
     def category_params
         params.permit(:category, :name)
+    end
+
+    def authorize 
+        render json: { errors: "Not authorized" }, status: :unauthorized unless session.include? :user_id
     end
 end
