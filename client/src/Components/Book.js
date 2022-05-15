@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import StarRating from './StarRating'
 
 const Book = (props) => {
-  console.log(props)
 
   return (
     <div>

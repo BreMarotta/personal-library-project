@@ -21,7 +21,7 @@ const ShowPage = () => {
             setQuotes(data.quotes)
             setBook(data)
         })
-      }, [])
+      }, [params.id])
 
   const toggleEditForm = () => {
     setFormFlag(!formFlag)

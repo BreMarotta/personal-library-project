@@ -6,7 +6,7 @@ class Category < ApplicationRecord
         self.order("name": :asc)
     end
 
-    def self.book_order
+    def book_order
         books.order("title": :asc)
     end
 end

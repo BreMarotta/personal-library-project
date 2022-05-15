@@ -13,11 +13,15 @@ const Category = () => {
         fetch(`/categories/${params.id}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            setBooks(data.books)
-            // setCategory(data.name)
+            categoryName(data)
+            setBooks(data)
+            
         })
     }, [params])
+
+    const categoryName = (array) => {
+        array.map(b => setCategory(b.category.name))
+    }
     
     const displayBooks = books.map(b => <Book key={b.id} book={b}/>)
     

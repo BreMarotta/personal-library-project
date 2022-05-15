@@ -21,7 +21,7 @@ const Navigation = () => {
       console.log(isActive)
       if (isActive) {
         return("trial")
-      } else {
+      } else if (!isActive){
         return("linkStyles")
       }
     }
@@ -34,8 +34,8 @@ const Navigation = () => {
         <div className= "navigation">
             <button className="logoutButton" onClick={logoutUser}>Logout</button>
             <h1 className="title">{user.username}'s Personal Library</h1>
-            <NavLink to="/" className={activeFunction}>Home</NavLink>
-            <NavLink to="/library" className={activeFunction}>Library</NavLink>
+            <NavLink to="/" className="linkStyles">Home</NavLink>
+            <NavLink to="/library" className="linkStyles">Library</NavLink>
             <NavLink to='/library/new' className="linkStyles" >Add a Book</NavLink>
             <br/>
             <br/>
