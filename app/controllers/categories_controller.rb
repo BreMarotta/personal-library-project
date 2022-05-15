@@ -4,6 +4,15 @@ class CategoriesController < ApplicationController
         render json: Category.all.sort_order
     end
     
+    def show
+        category = current_user.categories.find_by(id: params[:id])
+        if category
+            render json: category
+        else
+            render json: { error: "Genre not found"}, status: :not_found
+        end
+    end
+
     def create 
         new_category = Category.create(category_params)
         if new_category.valid?
@@ -14,6 +23,9 @@ class CategoriesController < ApplicationController
     end
 
     private 
+    def current_user
+        User.find_by(id: session[:user_id])
+    end
 
     def category_params
         params.permit(:category, :name)

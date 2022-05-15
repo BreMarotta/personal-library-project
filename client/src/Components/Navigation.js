@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
 import { UserContext } from './MyContext'
 import { NavLink, useNavigate } from 'react-router-dom'
-// import Home from './Home'
-
 
 const Navigation = () => {
-    const {user, loggedIn, logout} = useContext(UserContext)
+    const {user, loggedIn, logout, userCategories} = useContext(UserContext)
     const navigate = useNavigate()
 
     const logoutUser = () => {
@@ -19,15 +17,30 @@ const Navigation = () => {
       })
     }
 
+    const activeFunction = (isActive) => {
+      console.log(isActive)
+      if (isActive) {
+        return("trial")
+      } else {
+        return("linkStyles")
+      }
+    }
+
+    // ( isActive == true ? "linkStyles" : "trial"))
+    const genreLinks = userCategories.map(c => <NavLink key={c.id} to={`/library/genres/${c.id}`} className="genreStyles">{c.name}</NavLink>)
+
     if (loggedIn) {
       return (
         <div className= "navigation">
             <button className="logoutButton" onClick={logoutUser}>Logout</button>
             <h1 className="title">{user.username}'s Personal Library</h1>
-            <NavLink to="/" className= "linkStyles" >Home</NavLink>
-            <NavLink to="/library" className= "linkStyles">Library</NavLink>
-            <NavLink to='/new' className="linkStyles" >Add a Book</NavLink>
-            <NavLink to='/categories/new' className="linkStyles" >Add Category</NavLink>
+            <NavLink to="/" className={activeFunction}>Home</NavLink>
+            <NavLink to="/library" className={activeFunction}>Library</NavLink>
+            <NavLink to='/library/new' className="linkStyles" >Add a Book</NavLink>
+            <br/>
+            <br/>
+            {genreLinks}
+            <NavLink to='/library/genres/new' className="genreStyles" >Add Genre</NavLink>
             
             
             <hr/>

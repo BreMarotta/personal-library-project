@@ -1,4 +1,4 @@
-.showpage, .home, .library, .form {
+.showpage, .home, .library, .form, .category {
  padding-left: 35px;  
  padding-right: 35px;
  padding-top: 15px;
@@ -25,10 +25,19 @@
   border-radius: 8px;
 }
 
-.genre {
+.genreStyles {
+  border-top: 5px;
+  padding-bottom: 10px;
+  padding: 5px;
+  color: linen;
+  font-weight: 450;
+  background-color: rgba(77, 65, 65, 0.9);
+  border-radius: 8px;
+}
+
+.trial {
+  background-color: green;
   color: black;
-  border-style: none;
-  border-bottom: black;
 }
 
 .title {
@@ -37,12 +46,19 @@
 }
 
 .searchbar {
-  width: 450px;
+  width: 45%;
   border-color: black;
 }
 button {
   background-color: linen;
   border-color: darkslategray;
+}
+
+button.genre {
+  border-style: none;
+  font-style: italic;
+  color: darkslategray;
+  font-weight: 450;
 }
 
 .on {
@@ -85,7 +101,6 @@ button {
 }
 
 ul {
-  padding-left: 15px;
   font-style: italic;
   color: darkslategray;
   font-weight: 150;

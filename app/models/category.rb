@@ -5,4 +5,8 @@ class Category < ApplicationRecord
     def self.sort_order 
         self.order("name": :asc)
     end
+
+    def self.book_order
+        books.order("title": :asc)
+    end
 end

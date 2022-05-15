@@ -1,17 +1,39 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { UserContext } from './MyContext'
+import Book from './Book'
 
-const Category = ({genre}) => {
-    const {filterBooks} = useContext(UserContext)
+const Category = () => {
+    const {loggedIn} = useContext(UserContext)
+    const params = useParams()
+    const [books, setBooks] = useState([])
+    const [category, setCategory] = useState("")
+
+    useEffect(() => {
+        fetch(`/categories/${params.id}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            setBooks(data.books)
+            // setCategory(data.name)
+        })
+    }, [params])
     
-    const handleClick = (e) => {
-        filterBooks(e.target.value)
-    }
-  return (
-      <li>
-        <button className="genre" value={genre.id} onClick={handleClick}>{genre.name}</button>
-    </li>
-  )
+    const displayBooks = books.map(b => <Book key={b.id} book={b}/>)
+    
+if (loggedIn) {
+     return (
+        <div className="category">
+            <h3>{category}</h3>
+            {displayBooks}
+        </div>
+     )
+  } else {
+    return (
+      <h3 className="unauthroized"> Not Authorized - Please Login or Signup</h3>
+    )
+  }
+  
 }
 
 export default Category

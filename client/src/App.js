@@ -10,6 +10,7 @@ import AddCategoryForm from './Components/AddCategoryForm';
 import Signup from './Components/Signup'
 import Login from './Components/Login'
 import ShowPage from './Components/ShowPage';
+import Category from './Components/Category';
 
 function App() {
   return (
@@ -23,8 +24,9 @@ function App() {
           <Route exact path="/signup" element={<Signup />}/>
           <Route exact path="/login" element={<Login />}/>
           <Route exact path="/library" element={<Library />} />
-          <Route exact path='/new' element={<AddBookForm />} />
-          <Route exact path='/categories/new' element={<AddCategoryForm />} />
+          <Route exact path='/library/new' element={<AddBookForm />} />
+          <Route exact path='/library/genres/new' element={<AddCategoryForm />} />
+          <Route path='/library/genres/:id' element={<Category />} />
           <Route path='library/:id' element={<ShowPage />}/>
         </Routes>
       </UserProvider>
