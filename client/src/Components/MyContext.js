@@ -71,11 +71,6 @@ const UserProvider = ({children}) => {
 
     const userCategories = uniqueCategories(books)
 
-    // const filterBooks = (id) => {
-    //     setFilterId(id)   
-    //   }
-
-
     const fetchCategories = () => {
         fetch('/categories')
         .then(res => res.json())
@@ -121,7 +116,6 @@ const UserProvider = ({children}) => {
         categories,
         addCategory,
         userCategories
-        // filterBooks
     }}>
         {children}
     </UserContext.Provider>

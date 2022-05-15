@@ -5,15 +5,16 @@ import { UserContext } from './MyContext'
 const Form = ({book, onSubmitForm}) => {
     const { categories } = useContext(UserContext)
 
-    const d = (book.category !== undefined || null ? book.category.id : 0 )
-    const b = (book.lent == null ? "" : book.lent)
+    const c = (book.category !== undefined || null ? book.category.id : 0 )
+    const l = (book.lent == null ? "" : book.lent)
+    const r = (book.rating == null ? 0 : book.rating)
 
     const [title, setTitle] = useState(book.title)
     const [author, setAuthor] = useState(book.author)
     const [favoriteQuote, setFavoriteQuote] = useState(book.favorite_quote)
-    const [rating, setRating] = useState(book.rating)
-    const [lent, setLent] = useState(b)
-    const [category, setCategory] = useState(d) 
+    const [rating, setRating] = useState(r)
+    const [lent, setLent] = useState(l)
+    const [category, setCategory] = useState(c) 
 
     
     
@@ -84,7 +85,7 @@ const Form = ({book, onSubmitForm}) => {
             <input 
                 type="text"
                 name="lent"
-                defaultValue={b}
+                defaultValue={l}
                 onChange={(e) => setLent(e.target.value)}/>
                 <br/>
 
