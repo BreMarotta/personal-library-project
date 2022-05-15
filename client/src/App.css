@@ -35,11 +35,6 @@
   border-radius: 8px;
 }
 
-.trial {
-  background-color: green;
-  color: black;
-}
-
 .title {
   width: 550px;
   background-color: rgba(77, 65, 65, 0.7);
@@ -52,13 +47,6 @@
 button {
   background-color: linen;
   border-color: darkslategray;
-}
-
-button.genre {
-  border-style: none;
-  font-style: italic;
-  color: darkslategray;
-  font-weight: 450;
 }
 
 .on {
@@ -86,7 +74,7 @@ button.genre {
   background-color: linen;
   float: right;
   padding: 15px;
-  padding-right: 25px;
+  padding-right: 20px;
   padding-bottom: 5%;
   width: 40%;
   border-radius: 2%;
@@ -100,10 +88,11 @@ button.genre {
   padding-left: 15px;
 }
 
-ul {
+ul.additional {
   font-style: italic;
   color: darkslategray;
   font-weight: 150;
+  padding: 0px 0px 0px 0px;
 }
 
 .unauthroized {

@@ -11,6 +11,7 @@ const ShowPage = () => {
   const navigate = useNavigate()
   const params = useParams()
   const [book, setBook] = useState({})
+  const [category, setCategory] = useState("")
   const [quotes, setQuotes] = useState([])
   const [formFlag, setFormFlag] = useState(false)
 
@@ -18,6 +19,8 @@ const ShowPage = () => {
     fetch(`/books/${params.id}`)
         .then(res => res.json())
         .then(data => {
+          console.log(data)
+            setCategory(data.category.name)
             setQuotes(data.quotes)
             setBook(data)
         })
@@ -55,6 +58,7 @@ const ShowPage = () => {
       <div>
         <h3>{book.title} <StarRating rating={book.rating}/></h3>
         <h5>by {book.author}</h5>
+        <h5>Genre: {category}</h5>
         <h4>Favorite quote: </h4>
         <p className="favorite">{book.favorite_quote}</p>
       </div>

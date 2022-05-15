@@ -3,8 +3,11 @@ class BooksController < ApplicationController
 
     def index 
         books = current_user.books.sort_order
-        render json: books
+        render json: books.to_json(only: [:id, :title, :author, :rating], include: [category: { only: [:id, :name]}])
     end
+
+    # , serializer: BookIndexSerializer
+    # .to_json(only: [:id, :title, :author, :rating], include: [:category] )
 
     def show 
         book = current_user.books.find_by(id: params[:id])
