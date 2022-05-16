@@ -48,7 +48,7 @@ const UserProvider = ({children}) => {
         fetch('/books')
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             setBooks(data)
         })
     }
@@ -97,8 +97,7 @@ const UserProvider = ({children}) => {
         setSearch(searchedInfo)
     }
 
-    const displayBooks = books.filter((book) =>   book.title.toLowerCase().includes(search.toLowerCase()) || book.author.toLowerCase().includes(search.toLowerCase()));
-
+    const displayBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase()) || book.author.toLowerCase().includes(search.toLowerCase()))
 
   return (
     <UserContext.Provider value= {{

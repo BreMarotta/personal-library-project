@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
    
-    # skip_before_action :authorize, only: :create
-    # sign up
     def create
         user = User.create(user_params)
         if user.valid?
@@ -12,8 +10,6 @@ class UsersController < ApplicationController
         end
     end
 
-
-    # keep user signed in (get current user)
     def show
         user = User.find_by(id: session[:user_id])
         if user

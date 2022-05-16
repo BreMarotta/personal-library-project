@@ -1,8 +1,6 @@
 class QuotesController < ApplicationController
     
-
     def create
-
         new_quote = current_book.quotes.create(quote_params)
         if new_quote.valid?
             render json: new_quote,  status: :created
@@ -10,10 +8,6 @@ class QuotesController < ApplicationController
             render json: {errors: quote.errors.full_messages}, status: :unprocessable_entity
         end
     end
-
-    # def update 
-    #     byebug
-    # end
 
     def destroy
         q = current_book.quotes.find_by(id: params[:id])
@@ -24,6 +18,7 @@ class QuotesController < ApplicationController
             render json: { error: "Quote not found"}, status: :not_found
         end
     end
+
 
     private
 

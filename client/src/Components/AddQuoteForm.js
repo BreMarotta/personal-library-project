@@ -3,9 +3,6 @@ import React, { useState } from 'react'
 
 const AddQuoteForm = ({book, onAddQuote, toggleQuoteForm}) => {
     const [quote, setQuote] = useState("")
-    
-    // const [errorsList, setErrorsList] = useState([])
-
     const bookId = book.id
 
     const handleSubmit = (e) => {

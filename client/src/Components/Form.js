@@ -8,15 +8,14 @@ const Form = ({book, onSubmitForm}) => {
     const c = (book.category !== undefined || null ? book.category.id : 0 )
     const l = (book.lent == null ? "" : book.lent)
     const r = (book.rating == null ? 0 : book.rating)
+    const a = (book.author == null ? "" : book.author)
 
     const [title, setTitle] = useState(book.title)
-    const [author, setAuthor] = useState(book.author)
+    const [author, setAuthor] = useState(a)
     const [favoriteQuote, setFavoriteQuote] = useState(book.favorite_quote)
     const [rating, setRating] = useState(r)
     const [lent, setLent] = useState(l)
-    const [category, setCategory] = useState(c) 
-
-    
+    const [category, setCategory] = useState(c)    
     
     const dropDown = categories.map(x => <option value={x.id} key={x.id}>{x.name}</option>)
 

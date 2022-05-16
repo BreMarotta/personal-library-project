@@ -43,7 +43,7 @@ const AddCategoryForm = () => {
                 <form className="form" onSubmit={handleSubmit}>
                     <h3>Add New Genre:</h3>
                     <hr/>
-                    <label>Genre Name: </label>
+                    <label>New Genre Name: </label>
                     <input  
                         type="text"
                         name="name"
