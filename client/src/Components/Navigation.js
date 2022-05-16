@@ -17,26 +17,16 @@ const Navigation = () => {
       })
     }
 
-    // const activeFunction = (isActive) => {
-    //   console.log(isActive)
-    //   if (isActive) {
-    //     return("trial")
-    //   } else if (!isActive){
-    //     return("linkStyles")
-    //   }
-    // }
-
-    // ( isActive == true ? "linkStyles" : "trial"))
     const genreLinks = userCategories.map(c => <NavLink key={c.id} to={`/library/genres/${c.id}`} className="genreStyles">{c.name}</NavLink>)
 
     if (loggedIn) {
       return (
         <div className= "navigation">
             <button className="logoutButton" onClick={logoutUser}>Logout</button>
-            <h1 className="title">{user.username}'s Personal Library</h1>
+            <h1 className="title">{user.username}'s Library</h1>
             <NavLink to="/" className="linkStyles">Home</NavLink>
             <NavLink to="/library" className="linkStyles">Library</NavLink>
-            <NavLink to='/library/new' className="linkStyles" >Add a Book</NavLink>
+            <NavLink to='/library/new' className="linkStyles" >Add Book</NavLink>
             <br/>
             <br/>
             {genreLinks}

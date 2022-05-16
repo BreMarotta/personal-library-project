@@ -11,8 +11,6 @@ const Library = () => {
   if (loggedIn) {
   return (
     <div>
-      <div className="additionalContainer">
-      </div>
       <div className="library">
         <Search />
         {displayBooks}

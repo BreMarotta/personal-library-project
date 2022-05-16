@@ -1,8 +1,15 @@
+body {
+  background-color: whitesmoke;
+}
 .showpage, .home, .library, .form, .category {
  padding-left: 35px;  
  padding-right: 35px;
  padding-top: 15px;
  padding-bottom: 25px;
+}
+
+h5 {
+  padding-left: 35px;
 }
 
 .navigation {
@@ -33,6 +40,14 @@
   font-weight: 450;
   background-color: rgba(77, 65, 65, 0.9);
   border-radius: 8px;
+}
+
+.homeLinks {
+  color: linen;
+  font-weight: 550;
+  padding: 2px;
+  background-color: rgba(77, 65, 65, 0.8);
+  border-radius: 5px;
 }
 
 .title {

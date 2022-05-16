@@ -25,7 +25,7 @@ const Signup = () => {
         .then(user => {
             if (!user.errors){
                 signup(user)
-                navigate('/library')
+                navigate('/')
             } else {
                 setUsername("")
                 setPassword("")
@@ -49,14 +49,14 @@ const Signup = () => {
                 <br/>
             <label>Password: </label>
             <input 
-                type="text" 
+                type="password" 
                 id="password" 
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)}/> 
                 <br/>
             <label>Confirm Password: </label>
             <input 
-                type="text" 
+                type="password" 
                 id="passwordConfirmation" 
                 value={passwordConfirmation} 
                 onChange={(e) => setPasswordConfirmation(e.target.value)}/> 
