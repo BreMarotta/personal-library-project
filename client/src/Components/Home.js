@@ -16,8 +16,6 @@ const Home = () => {
                     <li>Click on a title to visit a page with details about that book.</li>
                     <li>From a book's page, you can view and edit book details. You can also add or delete additional quotes from the text that you enjoy.
                     </li>
-                    
-                    <br/>
                     <li>The second line on the navigation bar has links for each genre represented by books in your collection. Visiting one of those links will render a list of books in that genre.</li>
                     <li>Finally, visit <NavLink className="homeLinks" to='library/genres/new'>Add Genre</NavLink> to add a genre to the list of those available.</li>   
                 </ul>
