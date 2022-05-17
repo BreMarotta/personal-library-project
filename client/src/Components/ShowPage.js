@@ -19,7 +19,7 @@ const ShowPage = () => {
     fetch(`/books/${params.id}`)
         .then(res => res.json())
         .then(data => {
-          console.log(data)
+          // console.log(data)
             setCategory(data.category.name)
             setQuotes(data.quotes)
             setBook(data)
@@ -52,6 +52,8 @@ const ShowPage = () => {
     })
   }
 
+  const quoteDisplay = book.favorite_quote ? "Favorite quote:" : ""
+
   const display = 
     formFlag === true ? 
       <UpdateBookForm book={book} updateBook={updateBook} /> : 
@@ -59,7 +61,7 @@ const ShowPage = () => {
         <h3>{book.title} <StarRating rating={book.rating}/></h3>
         <h5>by {book.author}</h5>
         <h5>Genre: {category}</h5>
-        <h4>Favorite quote: </h4>
+        <h4>{quoteDisplay} </h4>
         <p className="favorite">{book.favorite_quote}</p>
       </div>
 
