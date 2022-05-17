@@ -17,7 +17,7 @@ const Navigation = () => {
       })
     }
 
-    const genreLinks = userCategories.map(c => <NavLink key={c.id} to={`/library/genres/${c.id}`} className="genreStyles">{c.name}</NavLink>)
+    const genreLinks = userCategories.map(c => <NavLink key={c.id} name={c.name} to={`/library/genres/${c.id}`} className="genreStyles">{c.name}</NavLink>)
 
     if (loggedIn) {
       return (

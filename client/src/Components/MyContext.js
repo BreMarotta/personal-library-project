@@ -10,7 +10,8 @@ const UserProvider = ({children}) => {
     const [books, setBooks] = useState([])
     const [categories, setCategories] = useState([])
     const [category, setCategory] = useState("")
-    // const [genreBooks, setGenreBooks] = useState([])
+    const [x, setX] = useState("")
+
 
     useEffect(() => {
         fetch('/me')
@@ -85,6 +86,17 @@ const UserProvider = ({children}) => {
         setCategories([...categories, category])
     }
 
+    const updateCategory = (id) => {
+        setCategory(id)
+        foo()   
+    }
+    const genreBooks = books.filter((b) => b.category.id == category)
+
+    const foo = () => {
+        const categoryName = books.find(b => b.category.id == category)
+        categoryName ? setX(categoryName.category.name) : console.log(categoryName)
+    }
+
     const onUpdateBook = (updatedBook) => {
         const updatedBooksList = books.map(b => b.id === updatedBook.id ? updatedBook : b )
         setBooks(updatedBooksList)
@@ -101,11 +113,7 @@ const UserProvider = ({children}) => {
 
     const displayBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase()) || book.author.toLowerCase().includes(search.toLowerCase()))
 
-    const updateCategory = (id) => {
-        setCategory(id)
-    }
 
-    const genreBooks = books.filter((b) => b.category.id == category)
 
   return (
     <UserContext.Provider value= {{
@@ -124,7 +132,8 @@ const UserProvider = ({children}) => {
         addCategory,
         userCategories,
         updateCategory,
-        genreBooks
+        genreBooks,
+        x
     }}>
         {children}
     </UserContext.Provider>

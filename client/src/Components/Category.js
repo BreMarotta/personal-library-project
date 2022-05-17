@@ -1,28 +1,20 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { UserContext } from './MyContext'
 import Book from './Book'
 
 const Category = () => {
-    const {loggedIn, updateCategory, genreBooks} = useContext(UserContext)
+    const {loggedIn, updateCategory, genreBooks, x} = useContext(UserContext)
     const params = useParams()
-    // const [category, setCategory] = useState("")
 
     updateCategory(params.id)
-    console.log(genreBooks)
 
-    // const categoryName = () => {
-    //     genreBooks.find(b => b.category)
-    // }
-    // console.log(categoryName)
-    
     const displayBooks = genreBooks.map(b => <Book key={b.id} book={b}/>)
-    
+   
 if (loggedIn) {
      return (
         <div className="category">
-
-            {/* <h3>{categoryName}</h3> */}
+          <h3>{x}</h3>
             {displayBooks}
         </div>
      )
