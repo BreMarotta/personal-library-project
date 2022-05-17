@@ -7,9 +7,9 @@ class CategoriesController < ApplicationController
     end
     
     def show
-        category = current_user.categories.find_by(id: params[:id])
+        category = current_user.categories.find_by(id: params[:id]).books
         if category
-            render json: category.books
+            render json: category
         else
             render json: { error: "Genre not found"}, status: :not_found
         end
