@@ -1,8 +1,9 @@
 class CategoriesController < ApplicationController
     before_action :authorize
 
-    def index        
-        render json: Category.all.sort_order
+    def index      
+        categories = Category.all.sort_order  
+        render json: categories.to_json(only: [:id, :name])
     end
     
     def show
