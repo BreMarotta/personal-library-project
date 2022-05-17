@@ -13,6 +13,7 @@ const Category = () => {
         fetch(`/categories/${params.id}`)
         .then(res => res.json())
         .then(data => {
+          console.log(data)
             categoryName(data)
             setBooks(data)
             
