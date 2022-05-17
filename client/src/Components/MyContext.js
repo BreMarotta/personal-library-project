@@ -9,6 +9,8 @@ const UserProvider = ({children}) => {
     const [search, setSearch] = useState("")
     const [books, setBooks] = useState([])
     const [categories, setCategories] = useState([])
+    const [category, setCategory] = useState("")
+    // const [genreBooks, setGenreBooks] = useState([])
 
     useEffect(() => {
         fetch('/me')
@@ -99,6 +101,12 @@ const UserProvider = ({children}) => {
 
     const displayBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase()) || book.author.toLowerCase().includes(search.toLowerCase()))
 
+    const updateCategory = (id) => {
+        setCategory(id)
+    }
+
+    const genreBooks = books.filter((b) => b.category.id == category)
+
   return (
     <UserContext.Provider value= {{
         user,
@@ -114,7 +122,9 @@ const UserProvider = ({children}) => {
         onDeleteBook,
         categories,
         addCategory,
-        userCategories
+        userCategories,
+        updateCategory,
+        genreBooks
     }}>
         {children}
     </UserContext.Provider>
