@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :quotes, only: [:create, :update, :destroy]
   end
 
-  resources :categories, only: [:create, :show, :index]
+  resources :categories, only: [:create, :index]
 
   
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

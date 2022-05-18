@@ -29,6 +29,6 @@ The user can:
 
 This project has been deployed via [heroku](https://new-personal-library.herokuapp.com/)
 
-* Please check out the [YouTube](youtube link) walk through video to see a highlight of all the SPA features. 
+* Please check out the [YouTube](https://youtu.be/lXMERDRuCEE) walk through video to see a highlight of all the SPA features. 
 
-* Also check out my [blog](blog link) about this project. 
+* Also check out my [blog](https://medium.com/@bremarotta/project-4-a-personal-library-ca03dfe9a5c0) about this project. 

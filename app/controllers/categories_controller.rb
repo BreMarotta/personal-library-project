@@ -5,15 +5,6 @@ class CategoriesController < ApplicationController
         categories = Category.all.sort_order  
         render json: categories.to_json(only: [:id, :name])
     end
-    
-    def show
-        category = current_user.categories.find_by(id: params[:id]).books
-        if category
-            render json: category
-        else
-            render json: { error: "Genre not found"}, status: :not_found
-        end
-    end
 
     def create 
         new_category = Category.create(category_params)
