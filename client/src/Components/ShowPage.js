@@ -31,9 +31,11 @@ const ShowPage = () => {
   }
 
   const updateBook = (updated) => {
+    setCategory(updated.category.name)
     setBook(updated)
     onUpdateBook(updated)
     toggleEditForm()
+    console.log(book)
   }
 
   const onAddQuote = (newQuote) => {
