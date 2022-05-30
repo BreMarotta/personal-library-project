@@ -29,7 +29,7 @@ const AddCategoryForm = () => {
         })
     }
 
-    const categoryLis = categories.map(x => <li key={x.id}><strong>{x.name}</strong> ({x.user_total} libraries)</li>)
+    const categoryLis = categories.map(x => <li key={x.id}><strong>{x.name}</strong> ({x.user_total} {x.user_total === 1 ? "library" : "libraries"})</li>)
 
     if (loggedIn) {
         return (

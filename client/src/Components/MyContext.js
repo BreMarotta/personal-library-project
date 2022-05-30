@@ -18,7 +18,7 @@ const UserProvider = ({children}) => {
         fetch('/me')
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             setUserCategories(data.category_list)
             setBooks(data.book_list)
             // const info = {id: data.id, username: data.username}
@@ -97,14 +97,17 @@ const UserProvider = ({children}) => {
     }
 
     const updateCategory = (id) => {
+        // const categoryName = categories.find(c => c.id == id)
+        // setX(categoryName.name)
         setCategory(id)
         foo()   
     }
     const genreBooks = books.filter((b) => b.category_id == category)
 
     const foo = () => {
-        const categoryName = books.find(b => b.category_id == category)
-        categoryName ? setX(categoryName.category.name) : console.log(categoryName)
+        const categoryName = categories.find(b => b.id == category)
+        console.log(categoryName)
+        categoryName ? setX(categoryName.name) : console.log()
     }
 
     const onUpdateBook = (updatedBook) => {
