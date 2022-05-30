@@ -1,10 +1,9 @@
 class CategorySerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :user_total
 
-  has_many :books
+  # has_many :books
 
-  private
-  def book_order
-    books.order("title": :asc)
-end
+  def user_total
+    self.object.users.count
+  end
 end

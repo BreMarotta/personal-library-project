@@ -1,30 +1,23 @@
 class CategoriesController < ApplicationController
-    before_action :authorize
-
+    skip_before_action :authorize, only: :index
     def index      
         categories = Category.all.sort_order  
-        render json: categories.to_json(only: [:id, :name])
+        render json: categories
+    end
+
+    def show
+        list = @current_user.category_list
+        byebug
     end
 
     def create 
-        new_category = Category.create(category_params)
-        if new_category.valid?
-            render json: new_category, status: :created
-        else
-            render json: { errors: new_category.errors.full_messages }, status: :unprocessable_entity
-        end
+        new_category = Category.create!(category_params)
+        render json: new_category, status: :created
     end
 
     private 
-    def current_user
-        User.find_by(id: session[:user_id])
-    end
 
     def category_params
         params.permit(:category, :name)
-    end
-
-    def authorize 
-        render json: { errors: "Not authorized" }, status: :unauthorized unless session.include? :user_id
     end
 end

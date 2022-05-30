@@ -9,6 +9,7 @@ const UserProvider = ({children}) => {
     const [search, setSearch] = useState("")
     const [books, setBooks] = useState([])
     const [categories, setCategories] = useState([])
+    const [userCategories, setUserCategories] = useState([])
     const [category, setCategory] = useState("")
     const [x, setX] = useState("")
 
@@ -17,21 +18,28 @@ const UserProvider = ({children}) => {
         fetch('/me')
         .then(res => res.json())
         .then(data => {
+            console.log(data)
+            setUserCategories(data.category_list)
+            setBooks(data.book_list)
+            // const info = {id: data.id, username: data.username}
             setUser(data)
             if (data.error){
                 setLoggedIn(false)
             } else {
                 setLoggedIn(true)
-                fetchBooks()
+                // fetchBooks()
                 fetchCategories()
             }
         })
     }, [])
+    // console.log(books)
+    // console.log(userCategories)
+    // console.log(user)
 
     const login = (user) => {
         setUser(user)
-        fetchBooks()
-        fetchCategories()
+        // fetchBooks()
+        // fetchCategories()
         setLoggedIn(true)
     }
 
@@ -42,42 +50,44 @@ const UserProvider = ({children}) => {
 
     const signup = (user) => {
         setUser(user)
-        fetchBooks()
-        fetchCategories()
+        // fetchBooks()
+        // fetchCategories()
         setLoggedIn(true)
     }
 
-    const fetchBooks = () => {
-        fetch('/books')
-        .then(res => res.json())
-        .then(data => {
-            // console.log(data)
-            setBooks(data)
-        })
-    }
+    // const fetchBooks = () => {
+    //     fetch('/books')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data)
+    //         setBooks(data)
+    //     })
+    // }
     
     const addBook = (book) => {
         setBooks([...books, book])
     }
 
-    const uniqueCategories = (books) => {
-        const flag = {};
-        const unique = [];
-        books.forEach(b => {
-            if (!flag[b.category.id]) {
-                flag[b.category.id] = true;
-                unique.push(b.category);
-            }
-        });
-        return unique;
-    }
+    // const uniqueCategories = (steph) => {
+    //     const flag = {};
+    //     const unique = [];
+    //     steph.forEach(b => {
+    //         if (!flag[b.id]) {
+    //             flag[b.id] = true;
+    //             unique.push(b);
+    //         }
+    //     });
+    //     console.log(unique)
+    //     return unique;
+    // }
 
-    const userCategories = uniqueCategories(books)
+    // const userCategories = uniqueCategories(steph)
 
     const fetchCategories = () => {
         fetch('/categories')
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             setCategories(data)
         })
     }
@@ -90,10 +100,10 @@ const UserProvider = ({children}) => {
         setCategory(id)
         foo()   
     }
-    const genreBooks = books.filter((b) => b.category.id == category)
+    const genreBooks = books.filter((b) => b.category_id == category)
 
     const foo = () => {
-        const categoryName = books.find(b => b.category.id == category)
+        const categoryName = books.find(b => b.category_id == category)
         categoryName ? setX(categoryName.category.name) : console.log(categoryName)
     }
 
@@ -122,7 +132,7 @@ const UserProvider = ({children}) => {
         login,
         logout, 
         signup,
-        fetchBooks,
+        // fetchBooks,
         books: displayBooks,
         updateSearch,
         addBook,

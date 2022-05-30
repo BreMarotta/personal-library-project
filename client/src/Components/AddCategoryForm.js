@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserContext} from './MyContext'
 
@@ -29,7 +29,7 @@ const AddCategoryForm = () => {
         })
     }
 
-    const categoryLis = categories.map(x => <li key={x.id}>{x.name}</li>)
+    const categoryLis = categories.map(x => <li key={x.id}><strong>{x.name}</strong> ({x.user_total} libraries)</li>)
 
     if (loggedIn) {
         return (

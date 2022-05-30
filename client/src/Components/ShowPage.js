@@ -19,7 +19,7 @@ const ShowPage = () => {
     fetch(`/books/${params.id}`)
         .then(res => res.json())
         .then(data => {
-          // console.log(data)
+          console.log(data)
             setCategory(data.category.name)
             setQuotes(data.quotes)
             setBook(data)
