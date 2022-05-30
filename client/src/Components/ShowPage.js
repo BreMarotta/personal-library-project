@@ -14,15 +14,20 @@ const ShowPage = () => {
   const [category, setCategory] = useState("")
   const [quotes, setQuotes] = useState([])
   const [formFlag, setFormFlag] = useState(false)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     fetch(`/books/${params.id}`)
         .then(res => res.json())
         .then(data => {
           console.log(data)
+          if (!data.error){
             setCategory(data.category.name)
             setQuotes(data.quotes)
             setBook(data)
+          } else {
+            setError(true)
+          }
         })
       }, [params.id])
 
@@ -82,7 +87,7 @@ const ShowPage = () => {
      })
   }
 
-  if (loggedIn) {
+  if (!error) {
     return (
       <div className="showpage">
         <QuoteSection book={book} quotes={quotes} onAddQuote={onAddQuote} deleteQuote={deleteQuote}/>
@@ -96,7 +101,7 @@ const ShowPage = () => {
     )
   } else {
     return (
-      <h3 className="unauthroized"> Not Authorized - Please Login or Signup</h3>
+      <h3 className="unauthroized"> Not Authorized - You Do Not Have Access to This Book</h3>
     )
   }
   
