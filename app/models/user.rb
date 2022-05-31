@@ -6,7 +6,7 @@ class User < ApplicationRecord
     has_many :categories, through: :books
 
     validates :username, :password, :password_confirmation,  presence: true
-    validates :username, uniqueness: true
+    validates :username, uniqueness: { case_sensitive: false }
 
     def self.most_books
         self.all.max_by  do |u|  

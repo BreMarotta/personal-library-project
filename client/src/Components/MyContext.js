@@ -13,7 +13,6 @@ const UserProvider = ({children}) => {
     const [category, setCategory] = useState("")
     const [x, setX] = useState("")
 
-
     useEffect(() => {
         fetch('/me')
         .then(res => res.json())
@@ -81,6 +80,7 @@ const UserProvider = ({children}) => {
         setCategory(id)
         getName()   
     }
+    
     const genreBooks = books.filter((b) => b.category_id == category)
 
     const getName = () => {
@@ -89,8 +89,10 @@ const UserProvider = ({children}) => {
     }
 
     const onUpdateBook = (updatedBook) => {
+        const findCategory = userCategories.find(c => c.id == updatedBook.category.id) 
+        findCategory ? console.log() : setUserCategories([...userCategories, updatedBook.category])
         const updatedBooksList = books.map(b => b.id === updatedBook.id ? updatedBook : b )
-        setBooks(updatedBooksList)
+        setBooks(updatedBooksList)        
     }
 
     const onDeleteBook = (id) => {

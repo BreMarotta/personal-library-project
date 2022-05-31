@@ -7,7 +7,7 @@ import StarRating from './StarRating'
 import Location from './Location'
 
 const ShowPage = () => {
-  const {loggedIn, onUpdateBook, onDeleteBook} = useContext(UserContext)
+  const {onUpdateBook, onDeleteBook} = useContext(UserContext)
   const navigate = useNavigate()
   const params = useParams()
   const [book, setBook] = useState({})
@@ -20,7 +20,7 @@ const ShowPage = () => {
     fetch(`/books/${params.id}`)
         .then(res => res.json())
         .then(data => {
-          console.log(data)
+          // console.log(data)
           if (!data.error && !data.errors){
             setCategory(data.category.name)
             setQuotes(data.quotes)
@@ -40,7 +40,7 @@ const ShowPage = () => {
     setBook(updated)
     onUpdateBook(updated)
     toggleEditForm()
-    console.log(book)
+    // console.log(book)
   }
 
   const onAddQuote = (newQuote) => {
