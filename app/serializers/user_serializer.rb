@@ -11,7 +11,7 @@ class UserSerializer < ActiveModel::Serializer
 
   def book_list
     list = self.object.books
-    list.sort_by{ |h| h[:name]}
+    list.sort_by{ |b| b[:title]}
   end
   
 end
