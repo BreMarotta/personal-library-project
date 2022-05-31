@@ -31,8 +31,9 @@ const UserProvider = ({children}) => {
     }, [])
 
     const login = (user) => {
+        // console.log(user)
         setUserCategories(user.category_list)
-        setBooks(user.book_list)
+        setBooks(user.books)
         setUser(user)
         fetchCategories()
         setLoggedIn(true)
@@ -80,7 +81,7 @@ const UserProvider = ({children}) => {
     
     const genreBooks = books.filter((b) => b.category.id == category)
     // console.log(category)
-    // console.log(genreBooks)
+    console.log(genreBooks)
     // console.log(books)
 
     const getName = () => {
