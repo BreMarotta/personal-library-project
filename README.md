@@ -48,6 +48,11 @@ This project has been deployed via [heroku](https://new-personal-library.herokua
 * Also check out my [blog](https://medium.com/@bremarotta/project-4-a-personal-library-ca03dfe9a5c0) about this project. 
 
 
+
+
+##
+#### License
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
