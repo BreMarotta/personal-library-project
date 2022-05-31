@@ -3,7 +3,8 @@ class CategorySerializer < ActiveModel::Serializer
 
 
   def user_total
-    self.object.users.size
+    # byebug
+    self.object.users.uniq.size
   end
 
   # def user_total
