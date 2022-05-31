@@ -2,10 +2,10 @@ class BooksController < ApplicationController
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-    def index 
-        books = @current_user.books.sort_order
-        render json: books
-    end
+    # def index 
+    #     books = @current_user.books.sort_order
+    #     render json: books
+    # end
 
     # .to_json(only: [:id, :title, :author, :rating], include: [category: { only: [:id, :name]}])
 

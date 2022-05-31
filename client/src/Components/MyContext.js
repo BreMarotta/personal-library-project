@@ -80,7 +80,7 @@ const UserProvider = ({children}) => {
         getName()   
     }
     
-    const genreBooks = books.filter((b) => b.category.id == category)
+    const genreBooks = books.filter((b) => b.category_id == category)
     // console.log(category)
     // console.log(genreBooks)
     // console.log(books)

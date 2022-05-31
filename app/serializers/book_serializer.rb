@@ -1,5 +1,5 @@
 class BookSerializer < ActiveModel::Serializer
-  attributes :id, :title, :author, :favorite_quote, :rating, :lent, :category
+  attributes :id, :title, :author, :favorite_quote, :rating, :lent, :category_id
 
   # belongs_to :category
   belongs_to :user
