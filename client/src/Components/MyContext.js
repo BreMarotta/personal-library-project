@@ -16,8 +16,7 @@ const UserProvider = ({children}) => {
     useEffect(() => {
         fetch('/me')
         .then(res => res.json())
-        .then(data => {
-            // console.log(data)           
+        .then(data => {       
             if (!data.errors){
                 setLoggedIn(true)
                 setUserCategories(data.category_list)
@@ -31,18 +30,12 @@ const UserProvider = ({children}) => {
     }, [])
 
     const login = (user) => {
-        // console.log(user)
         setUserCategories(user.category_list)
         setBooks(user.book_list)
         setUser(user)
         fetchCategories()
         setLoggedIn(true)
     }
-
-    // console.log(user)
-    // console.log(userCategories)
-    // console.log(books)
-    // console.log(categories)
 
     const logout = () => {
         setUser({})
@@ -118,7 +111,6 @@ const UserProvider = ({children}) => {
         login,
         logout, 
         signup,
-        // fetchBooks,
         books: displayBooks,
         updateSearch,
         addBook,

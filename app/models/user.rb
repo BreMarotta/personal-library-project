@@ -8,8 +8,15 @@ class User < ApplicationRecord
     validates :username, :password, :password_confirmation,  presence: true
     validates :username, uniqueness: { case_sensitive: false }
 
+    # def self.most_books
+    #     self.all.max_by  do |u|  
+    #         u.books.length
+    #     end
+    # end
+
     def self.most_books
-        self.all.max_by  do |u|  
+        users = User.preload(:books)
+        users.max_by do |u|
             u.books.length
         end
     end
@@ -19,5 +26,4 @@ class User < ApplicationRecord
         list.sort_by{ |h| h[:name]}
     end
 
-    # order("title": :asc)
 end

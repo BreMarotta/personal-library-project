@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
    
-    skip_before_action :authorize, only: :create
+    skip_before_action :authorize, only: [:create, :books]
 
     def create
         user = User.create!(user_params)
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     def books 
         most = User.most_books 
-        render json: most
+        render json: most.to_json(only: :username)
     end
 
     private
