@@ -66,6 +66,7 @@ const UserProvider = ({children}) => {
         fetch('/categories')
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             setCategories(data)
         })
     }
@@ -81,7 +82,7 @@ const UserProvider = ({children}) => {
     
     const genreBooks = books.filter((b) => b.category.id == category)
     // console.log(category)
-    console.log(genreBooks)
+    // console.log(genreBooks)
     // console.log(books)
 
     const getName = () => {

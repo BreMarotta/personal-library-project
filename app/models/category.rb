@@ -5,12 +5,15 @@ class Category < ApplicationRecord
     validates :name, uniqueness: { case_sensitive: false }
 
     def self.sort_order 
-        self.order("name": :asc)
+        categories = self.order("name": :asc).includes(:users)
+        categories.each do |c|
+            c.users.uniq.size 
+        end
     end
 
-    def self.totals        
-        categories = Category.left_outer_joins(:users).distinct.select('categories.*,COUNT(users.*) AS users_count').group('users_count')
-    end
+    # def self.totals        
+    #     categories = Category.left_outer_joins(:users).distinct.select('categories.*,COUNT(users.*) AS users_count').group('users_count')
+    # end
 
 
 end

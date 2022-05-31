@@ -10,7 +10,4 @@ class Book < ApplicationRecord
         self.order("title": :asc)
     end
 
-    # def self.most_books
-        
-    # end
 end

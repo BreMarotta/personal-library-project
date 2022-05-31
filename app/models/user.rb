@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
     validates :username, :password, :password_confirmation,  presence: true
     validates :username, uniqueness: { case_sensitive: false }
+    
 
     # def self.most_books
     #     self.all.max_by  do |u|  
@@ -23,9 +24,10 @@ class User < ApplicationRecord
         end
     end
 
-    def category_list
-        list = categories.uniq
-        list.sort_by{ |h| h[:name]}
-    end
+
+    # def category_list
+    #     list = categories.uniq
+    #     list.sort_by{ |h| h[:name]}
+    # end
 
 end
