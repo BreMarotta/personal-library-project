@@ -21,7 +21,7 @@ const UserProvider = ({children}) => {
                 console.log(data)
                 setLoggedIn(true)
                 setUserCategories(data.category_list)
-                setBooks(data.book_list)
+                setBooks(data.books)
                 setUser(data)
                 fetchCategories()
             } else {
@@ -78,7 +78,7 @@ const UserProvider = ({children}) => {
         getName()   
     }
     
-    const genreBooks = books.filter((b) => b.category_id == category)
+    const genreBooks = books.filter((b) => b.category.id == category)
     // console.log(category)
     // console.log(genreBooks)
     // console.log(books)
