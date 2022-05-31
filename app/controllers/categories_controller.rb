@@ -5,10 +5,6 @@ class CategoriesController < ApplicationController
         render json: categories
     end
 
-    # def show
-    #     list = @current_user.category_list
-    #     byebug
-    # end
 
     def create 
         new_category = Category.create!(category_params)

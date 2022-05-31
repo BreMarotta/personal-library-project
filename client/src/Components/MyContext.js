@@ -64,6 +64,7 @@ const UserProvider = ({children}) => {
         fetch('/categories')
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             setCategories(data)
         })
     }
