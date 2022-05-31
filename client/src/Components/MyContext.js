@@ -61,6 +61,9 @@ const UserProvider = ({children}) => {
     }
     
     const addBook = (book) => {
+        console.log(book)
+        const findCategory = userCategories.find(c => c.id == book.category.id) 
+        findCategory ? console.log() : setUserCategories([...userCategories, book.category])
         setBooks([...books, book])
     }
 
