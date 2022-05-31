@@ -22,6 +22,7 @@ const ShowPage = () => {
         .then(data => {
           // console.log(data)
           if (!data.error && !data.errors){
+            console.log(data)
             setCategory(data.category.name)
             setQuotes(data.quotes)
             setBook(data)
