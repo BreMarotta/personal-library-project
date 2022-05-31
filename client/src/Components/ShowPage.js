@@ -21,13 +21,13 @@ const ShowPage = () => {
         .then(res => res.json())
         .then(data => {
           console.log(data)
-          if (!data.error){
+          if (!data.error && !data.errors){
             setCategory(data.category.name)
             setQuotes(data.quotes)
             setBook(data)
           } else {
             setError(true)
-          }
+          }          
         })
       }, [params.id])
 
@@ -103,8 +103,7 @@ const ShowPage = () => {
     return (
       <h3 className="unauthroized"> Not Authorized - You Do Not Have Access to This Book</h3>
     )
-  }
-  
+  }  
 }
 
 export default ShowPage

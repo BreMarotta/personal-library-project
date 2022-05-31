@@ -4,6 +4,6 @@ class CategorySerializer < ActiveModel::Serializer
   # has_many :books
 
   def user_total
-    self.object.users.count
+    self.object.users.size
   end
 end
