@@ -24,10 +24,10 @@ class User < ApplicationRecord
         end
     end
 
-
-    # def category_list
-    #     list = categories.uniq
-    #     list.sort_by{ |h| h[:name]}
-    # end
+    def self.long_quotes
+        Quote.preload(:book).top_three.map do |q|
+            q.book.user.username
+        end.uniq
+    end
 
 end
